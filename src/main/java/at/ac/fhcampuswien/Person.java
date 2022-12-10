@@ -1,4 +1,4 @@
 package at.ac.fhcampuswien;
 
-public class Person {
+public abstract class Person {
 }
