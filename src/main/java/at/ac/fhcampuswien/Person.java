@@ -4,5 +4,17 @@ public abstract class Person {
     private String name;
     private Hand currentHand;
 
+    public Person(){
+        currentHand=new Hand();
+    }
+    public String getName(){
+        return name;
+    }
+
+    public Hand getCurrentHand(){
+        return currentHand;
+    }
+
+
 
 }
