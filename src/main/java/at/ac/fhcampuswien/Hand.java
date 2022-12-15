@@ -22,7 +22,7 @@ public class Hand {
         Random random = new Random();
         for (int i=0;i<2;i++){
             int randomInt = random.nextInt(52)-1;
-            inHand.add(stapel.stapel.get(randomInt));
+            inHand.add(stapel.stapelList.get(randomInt));
         }
 
     }

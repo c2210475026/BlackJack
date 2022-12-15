@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stapel {
-    List<Card> stapel;
+    List<Card> stapelList;
 
     public Stapel(){
-        stapel=new ArrayList<>();
+        stapelList =new ArrayList<>();
         fillStapel();
     }
 
