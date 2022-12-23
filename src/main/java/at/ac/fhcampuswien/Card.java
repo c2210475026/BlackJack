@@ -4,6 +4,7 @@ public class Card {
     private int wert;
     private char symbol;
 
+
     public Card(int wert,char symbol){
         this.wert=wert;
         this.symbol=symbol;

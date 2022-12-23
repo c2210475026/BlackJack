@@ -60,7 +60,7 @@ public class Stapel {
 
     public Card drawCard(){
         Random random = new Random();
-        int randomInt = random.nextInt(52)-1;
+        int randomInt = random.nextInt(stapelList.size())-1;
         Card card = getStapelCard(randomInt);
         deleteStapelCard(randomInt);
         return card;
