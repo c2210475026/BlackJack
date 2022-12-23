@@ -5,7 +5,6 @@ public abstract class Person {
     private Hand currentHand;
 
     public Person(){
-        currentHand=new Hand();
     }
     public String getName(){
         return name;
@@ -14,7 +13,5 @@ public abstract class Person {
     public Hand getCurrentHand(){
         return currentHand;
     }
-
-
 
 }

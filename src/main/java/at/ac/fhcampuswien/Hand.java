@@ -19,13 +19,8 @@ public class Hand {
     }
 
     public void drawHand(){
-        Random random = new Random();
         for (int i=0;i<2;i++){
-            int randomInt = random.nextInt(52)-1;
-            inHand.add(stapel.stapelList.get(randomInt));
+           inHand.add(stapel.drawCard());
         }
-
     }
-
-
 }

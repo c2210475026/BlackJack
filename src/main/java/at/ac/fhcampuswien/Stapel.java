@@ -2,9 +2,10 @@ package at.ac.fhcampuswien;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Stapel {
-    List<Card> stapelList;
+    private List<Card> stapelList;
 
     public Stapel(){
         stapelList =new ArrayList<>();
@@ -39,5 +40,29 @@ public class Stapel {
                 }
             }
         }
+    }
+
+    public List<Card> getStapelList() {
+        return stapelList;
+    }
+
+    public Card getStapelCard(int position){
+        return stapelList.get(position);
+    }
+
+    public void deleteStapelCard(int position){
+        stapelList.remove(position);
+    }
+
+    public void deleteStapelCard(Card card){
+        stapelList.remove(card);
+    }
+
+    public Card drawCard(){
+        Random random = new Random();
+        int randomInt = random.nextInt(52)-1;
+        Card card = getStapelCard(randomInt);
+        deleteStapelCard(randomInt);
+        return card;
     }
 }
