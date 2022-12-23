@@ -51,5 +51,12 @@ public class Hand {
         return sum;
     }
 
-
+    @Override
+    public String toString(){
+        String returnString="";
+        for(Card card : inHand){
+            returnString = returnString + card+", ";
+        }
+        return "You current hand is: "+ returnString;
+    }
 }
