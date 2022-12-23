@@ -13,6 +13,10 @@ public class Card {
         return wert;
     }
 
+    public void setWert(int wert) {
+        this.wert = wert;
+    }
+
     public char getSymbol(){
         return symbol;
     }

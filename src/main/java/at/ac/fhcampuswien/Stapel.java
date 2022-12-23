@@ -25,7 +25,12 @@ public class Stapel {
                     currentSymbol='D';
                 }
                 for(int cardValue = 1; cardValue<=9;cardValue++) {
-                    Card nCard = new Card(cardValue,currentSymbol);
+                    Card nCard;
+                    if(cardValue==1){
+                        nCard = new Card(11,currentSymbol);
+                    }else{
+                        nCard = new Card(cardValue,currentSymbol);
+                    }
                     stapelList.add(nCard);
                 }
                 for(int countHighCardNumbers = 1; countHighCardNumbers <= 4; countHighCardNumbers++){
