@@ -4,14 +4,20 @@ public class Card {
     private int wert;
     private char symbol;
 
+    private String name;
 
-    public Card(int wert,char symbol){
+    public Card(int wert,char symbol, String name){
         this.wert=wert;
         this.symbol=symbol;
+        this.name=name;
     }
 
     public int getWert(){
         return wert;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setWert(int wert) {
@@ -40,6 +46,6 @@ public class Card {
             default:
                 return "Card have wrong symbol";
         }
-        return cardName + " : " + wert;
+        return name +" Of "+cardName + " : " + wert;
     }
 }

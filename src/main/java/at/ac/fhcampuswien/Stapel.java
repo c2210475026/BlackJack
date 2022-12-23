@@ -28,18 +28,74 @@ public class Stapel {
                 for(int cardValue = 1; cardValue<=9;cardValue++) {
                     Card nCard;
                     if(cardValue==1){
-                        nCard = new Card(11,currentSymbol);
+                        nCard = new Card(11,currentSymbol, "Ace");
                     }else{
-                        nCard = new Card(cardValue,currentSymbol);
+                        nCard = new Card(cardValue,currentSymbol,decideName(cardValue));
                     }
                     stapelList.add(nCard);
                 }
                 for(int countHighCardNumbers = 1; countHighCardNumbers <= 4; countHighCardNumbers++){
-                    Card hCards = new Card(10,currentSymbol);
+                    Card hCards = new Card(10,currentSymbol,decideHighName(countHighCardNumbers));
                     stapelList.add(hCards);
                 }
             }
         }
+    }
+
+    private String decideName(int value){
+        String name;
+
+        switch(value){
+            case 2:
+                name="Two";
+                break;
+            case 3:
+                name ="Three";
+                break;
+            case 4:
+                name ="Four";
+                break;
+            case 5:
+                name ="Five";
+                break;
+            case 6:
+                name ="Six";
+                break;
+            case 7:
+                name ="Seven";
+                break;
+            case 8:
+                name ="Eight";
+                break;
+            case 9:
+                name ="Nine";
+                break;
+            default:
+                return "Error with name";
+        }
+        return name;
+    }
+
+    private String decideHighName(int value){
+        String name;
+
+        switch (value){
+            case 1:
+                name="Ten";
+                break;
+            case 2:
+                name="Jack";
+                break;
+            case 3:
+                name="Queen";
+                break;
+            case 4:
+                name="King";
+                break;
+            default:
+                return "Error with high value name";
+        }
+        return name;
     }
 
     public List<Card> getStapelList() {
