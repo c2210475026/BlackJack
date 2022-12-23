@@ -16,4 +16,25 @@ public class Card {
     public char getSymbol(){
         return symbol;
     }
+
+    public String toString(){
+        String cardName;
+        switch (symbol){
+            case 'S':
+                cardName = "Spades";
+                break;
+            case 'D':
+                cardName = "Diamonds";
+                break;
+            case 'H':
+                cardName = "Hearts";
+                break;
+            case 'C':
+                cardName = "Clubs";
+                break;
+            default:
+                return "Card have wrong symbol";
+        }
+        return cardName + " : " + wert;
+    }
 }
