@@ -12,10 +12,22 @@ public class Testing {
 
         System.out.println(jamesi.getInHand());
         System.out.println(jamesi);
-        jamesi.clearHand();
-        System.out.println(jamesi);
-        System.out.println(jamesi.addgetCardToHand());
-        System.out.println(jamesi);
         System.out.println(jamesi.sumOfCards());
+
+
+        Player lind = new Player("Lind", jamesi);
+        System.out.println(lind.getName());
+        System.out.println(lind.getCurrentHand());
+        lind.hit();
+        System.out.println(lind.getCurrentHand());
+        System.out.println(lind.getCurrentHand().sumOfCards());
+
+
+        Hand handOfDealer = new Hand(james);
+        Dealer dealer1 = new Dealer(handOfDealer);
+
+        System.out.println(dealer1.getName());
+
+
     }
 }
