@@ -1,8 +1,12 @@
 package at.ac.fhcampuswien;
 
+import java.util.Collections;
+
 public class Testing {
     public static void main(String[] args) {
         Stapel james = new Stapel();
+        System.out.println(james.getStapelList().size());
+        System.out.println(james.getStapelList());
         Hand jamesi = new Hand(james);
 
         System.out.println(james.getStapelList());
