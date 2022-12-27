@@ -23,4 +23,14 @@ public abstract class Person {
     public void setCurrentHand(Hand currentHand) {
         this.currentHand = currentHand;
     }
-}
+
+    public boolean isBusted(){
+
+        if (currentHand.sumOfCards() > 21){
+            return true;
+        }
+        return false;
+    }
+
+
+}//end of class

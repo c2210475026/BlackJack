@@ -26,12 +26,14 @@ public class Testing {
         System.out.println(lind.getCurrentHand());
         System.out.println(lind.getCurrentHand().sumOfCards());
 
-
         Hand handOfDealer = new Hand(james);
         Dealer dealer1 = new Dealer(handOfDealer);
 
+        System.out.println("LINE BREAK!!!!!!!!");
         System.out.println(dealer1.getName());
+        System.out.println(dealer1.getCurrentHand());
 
-
+        System.out.println(dealer1.getCurrentHand());
+        System.out.println(dealer1.isBusted());
     }
 }

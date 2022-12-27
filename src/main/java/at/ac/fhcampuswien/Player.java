@@ -6,9 +6,13 @@ public class Player extends Person {
         this.setName(name);
         this.setCurrentHand(currentHand);
     }
-
-    public void hit() {
+    public void hit(){
         getCurrentHand().addgetCardToHand();
     }
-}
+
+    public void stay(){
+
+    }
+
+}//end of class
 
