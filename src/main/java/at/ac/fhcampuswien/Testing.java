@@ -36,5 +36,7 @@ public class Testing {
         lind.hit();
         System.out.println(lind.getCurrentHand());
 
+        dealer1.firstHand();
+
     }
 }

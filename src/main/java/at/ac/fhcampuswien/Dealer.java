@@ -24,4 +24,8 @@ public class Dealer extends Person {
         else return false;
     }
 
+    public void firstHand(){
+        System.out.println("Dealer hand is : " + getCurrentHand().getHandCard(0) + " and [HIDDEN]");
+    }
+
 }//end of class
