@@ -1,17 +1,20 @@
 package at.ac.fhcampuswien;
 
 public class Card {
+    //VARIABLES
     private int wert;
     private char symbol;
 
     private String name;
 
+    //CONSTRUCTOR
     public Card(int wert,char symbol, String name){
         this.wert=wert;
         this.symbol=symbol;
         this.name=name;
     }
 
+    //GETTER AND SETTER
     public int getWert(){
         return wert;
     }
