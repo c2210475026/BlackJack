@@ -14,8 +14,14 @@ public class Dealer extends Person {
         this.setCurrentHand(currentHand);
     }
 
-    public void showCard(){
+    @Override
+    public boolean checkIfBlackJack(){
+        if(getCurrentHand().sumOfCards()==21){
+            System.out.println("Dealer" + "(" + getName() +") has BlackJack!");
 
+            return true;
+        }
+        else return false;
     }
 
 }//end of class
