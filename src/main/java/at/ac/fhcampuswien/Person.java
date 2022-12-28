@@ -32,5 +32,7 @@ public abstract class Person {
         return false;
     }
 
-
+    public void hit(){
+        getCurrentHand().addgetCardToHand();
+    }
 }//end of class

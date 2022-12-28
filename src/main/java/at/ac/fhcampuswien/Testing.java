@@ -20,11 +20,7 @@ public class Testing {
 
 
         Player lind = new Player("Lind", jamesi);
-        System.out.println(lind.getName());
-        System.out.println(lind.getCurrentHand());
-        lind.hit();
-        System.out.println(lind.getCurrentHand());
-        System.out.println(lind.getCurrentHand().sumOfCards());
+
 
         Hand handOfDealer = new Hand(james);
         Dealer dealer1 = new Dealer(handOfDealer);
@@ -35,5 +31,10 @@ public class Testing {
 
         System.out.println(dealer1.getCurrentHand());
         System.out.println(dealer1.isBusted());
+
+        System.out.println(lind.getCurrentHand());
+        lind.hit();
+        System.out.println(lind.getCurrentHand());
+
     }
 }
