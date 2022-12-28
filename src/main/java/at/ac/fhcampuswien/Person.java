@@ -35,4 +35,13 @@ public abstract class Person {
     public void hit(){
         getCurrentHand().addgetCardToHand();
     }
-}//end of class
+    public boolean checkIfBlackJack(){
+        if(getCurrentHand().sumOfCards()==21){
+            System.out.println(name +" has BlackJack!");
+            return true;
+        }
+        else return false;
+    }
+
+
+    }//end of class)
