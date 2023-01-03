@@ -15,6 +15,14 @@ public class Dealer extends Person {
         super.setCurrentHand(currentHand);
     }
 
+
+    public void resolveDealerHand(){
+        while (getCurrentHand().sumOfCards() <= 16){
+            getCurrentHand().addgetCardToHand();
+        }
+    }
+
+
     @Override
     public boolean checkIfBlackJack(){
         if(getCurrentHand().sumOfCards()==21){

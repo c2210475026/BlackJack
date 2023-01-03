@@ -10,37 +10,26 @@ public class Player extends Person {
     public Player(String name, Hand currentHand) {
         super(name,currentHand);
     }
-    public void hit(){
-        getCurrentHand().addgetCardToHand();
-    }
 
     public void decideMove(){
         System.out.println("Enter (h) for hit or (s) for stay");
 
         String in = sc.next().toLowerCase();
 
-        char ch = in.charAt(0);
+        while (true){
 
-
-        while (ch != 'h' && ch != 's'){
-            System.out.println("Wrong Input, try again.");
-            System.out.println("Enter (h) for hit or (s) for stay");
-
-            in= sc.next();
-
-            ch = in.charAt(0);
-
-            if (ch == 'h'){
+            if (in.equals("h")){
                 System.out.println( getName() + " decided to hit");
                 hit();
-            }else {
+                break;
+            }else if(in.equals("s")) {
                 System.out.println( getName() + " decided to stay");
+                break;
+            }else {
+                System.out.println("Wrong Input, try again.");
             }
         }
-    }
-
-
-
+    }//end of decideMove
 
 }//end of class
 
