@@ -41,7 +41,7 @@ public abstract class Person {
     }
 
     public boolean checkIfBlackJack(){
-        if(getCurrentHand().sumOfCards()==21){
+        if(getCurrentHand().sumOfCards()==21 && getCurrentHand().getInHand().size() == 2){
             System.out.println(name +" has BlackJack!");
             return true;
         }

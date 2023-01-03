@@ -13,6 +13,7 @@ public class GameControl {
     private Dealer dealer;
 
 
+
     //Constructor
     public GameControl(Player player, Dealer dealer) {
         this.player = player;
@@ -56,10 +57,14 @@ public class GameControl {
 
 
     public void playRound(){
-        //Persons draw their Hand
-
 
         //Output the Cards of the Persons
+        System.out.println(player.getCurrentHand());
+        dealer.firstHand();
+
+        if (dealer.checkIfBlackJack() || player.checkIfBlackJack()){
+
+        }
 
 
 

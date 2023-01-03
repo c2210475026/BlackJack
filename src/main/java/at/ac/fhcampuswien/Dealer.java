@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import java.util.LinkedHashMap;
 import java.util.Random;
 
 public class Dealer extends Person {
@@ -25,9 +26,8 @@ public class Dealer extends Person {
 
     @Override
     public boolean checkIfBlackJack(){
-        if(getCurrentHand().sumOfCards()==21){
+        if(getCurrentHand().sumOfCards()==21 && getCurrentHand().getInHand().size() == 2){
             System.out.println("Dealer" + "(" + getName() +") has BlackJack!");
-
             return true;
         }
         else return false;
