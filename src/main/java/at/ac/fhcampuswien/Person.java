@@ -5,6 +5,10 @@ public abstract class Person {
     private Hand currentHand;
 
     public Person(){
+
+    }
+
+    public Person(String name, Hand currentHand){
         this.name = name;
         this.currentHand = currentHand;
     }
@@ -35,6 +39,7 @@ public abstract class Person {
     public void hit(){
         getCurrentHand().addgetCardToHand();
     }
+
     public boolean checkIfBlackJack(){
         if(getCurrentHand().sumOfCards()==21){
             System.out.println(name +" has BlackJack!");

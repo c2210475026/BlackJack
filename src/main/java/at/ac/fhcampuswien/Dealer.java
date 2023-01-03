@@ -7,11 +7,12 @@ public class Dealer extends Person {
     private String[] nameOfDealers = {"Doyle Brunson", "Daniel Negreanu", "Dave Ulliott", "Michael Mizrachi", "Chris Ferguson"};
 
     Random random = new Random();
-    int index = random.nextInt(nameOfDealers.length);
+    int index = random.nextInt(nameOfDealers.length)-1;
+
 
     public Dealer(Hand currentHand){
-        this.setName(nameOfDealers[index]);
-        this.setCurrentHand(currentHand);
+        super.setName(nameOfDealers[index]);
+        super.setCurrentHand(currentHand);
     }
 
     @Override
@@ -27,5 +28,7 @@ public class Dealer extends Person {
     public void firstHand(){
         System.out.println("Dealer hand is : " + getCurrentHand().getHandCard(0) + " and [HIDDEN]");
     }
+
+
 
 }//end of class

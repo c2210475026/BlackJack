@@ -8,8 +8,7 @@ public class Player extends Person {
 
 
     public Player(String name, Hand currentHand) {
-        this.setName(name);
-        this.setCurrentHand(currentHand);
+        super(name,currentHand);
     }
     public void hit(){
         getCurrentHand().addgetCardToHand();
@@ -37,7 +36,6 @@ public class Player extends Person {
             }else {
                 System.out.println( getName() + " decided to stay");
             }
-
         }
     }
 
