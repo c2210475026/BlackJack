@@ -11,7 +11,6 @@ public class Hand {
     public Hand(Stapel stapel){
         inHand=new ArrayList<>();
         this.stapel=stapel;
-        drawHand();
     }
 
     public List<Card> getInHand(){
