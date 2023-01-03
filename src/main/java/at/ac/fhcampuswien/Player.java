@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Player extends Person {
 
+    private int coins;
+
     Scanner sc = new Scanner(System.in);
 
 
