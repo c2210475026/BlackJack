@@ -23,9 +23,11 @@ public class Player extends Person {
             if (in.equals("h")){
                 System.out.println( getName() + " decided to hit");
                 hit();
+                System.out.println(getCurrentHand());
                 break;
             }else if(in.equals("s")) {
                 System.out.println( getName() + " decided to stay");
+                System.out.println(getCurrentHand());
                 break;
             }else {
                 System.out.println("Wrong Input, try again.");

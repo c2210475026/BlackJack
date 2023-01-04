@@ -13,7 +13,6 @@ public class GameControl {
     private Dealer dealer;
 
 
-
     //Constructor
     public GameControl(Player player, Dealer dealer) {
         this.player = player;
@@ -39,38 +38,90 @@ public class GameControl {
 
     //Methods
 
-
-    public Person resolveWinner(Player player, Dealer dealer){
+    //compares card values from each hand
+    public Person resolveWinner(Player player, Dealer dealer) {
 
         int playersHandSum = player.getCurrentHand().sumOfCards();
 
         int dealersHandSum = dealer.getCurrentHand().sumOfCards();
 
-        if (playersHandSum > dealersHandSum){
-            return player;
-        }else if (playersHandSum < dealersHandSum){
+        if (playersHandSum > dealersHandSum) {
+            System.out.println("Dealer has won!");
+            startRound();
             return dealer;
-        }else {
+        } else if (playersHandSum < dealersHandSum) {
+            System.out.println(player.getName() + " has won!");
+            startRound();
+            return player;
+        } else {
+            startRound();
             throw new RuntimeException("It's a Tie");
         }
     }
 
+    //looks if any Person has Blackjack in the beginning
+    public void checkBeginningBlackJack() {
+        if (dealer.checkIfBlackJack() && player.checkIfBlackJack()) {//if both have Blackjack it's a tie
+            System.out.println("Dealer and " + player.getName() + "both have Blackjack");
+        } else if (dealer.checkIfBlackJack()) {
+            dealer.getCurrentHand(); //Print the hand of the dealer if dealer has Blackjack
+            System.out.println("Dealer has Blackjack");
+            startRound();//restart
+        }
 
-    public void playRound(){
+        if (player.checkIfBlackJack()) {
+            System.out.println(player.getName() + " has Blackjack ");
+            startRound();//restart
+        }
+    }
 
-        //Output the Cards of the Persons
-        System.out.println(player.getCurrentHand());
-        dealer.firstHand();
 
-        if (dealer.checkIfBlackJack() || player.checkIfBlackJack()){
+    public void startRound() {
 
+        boolean begginingOfRound = true;
+
+        //looks if the beginning of the round and clears the hand of player and dealer
+        if (begginingOfRound) {
+            dealer.getCurrentHand().clearHand();
+            player.getCurrentHand().clearHand();
+            begginingOfRound = false;
         }
 
 
+        //dealer draws hand
+        dealer.getCurrentHand().drawHand();
 
+        //player draws hand
+        player.getCurrentHand().drawHand();
+
+
+        //show dealers cards, with the hole card (hidden card)
+        dealer.firstHand();
+
+        //show the two cards of the player
+        System.out.println(player.getCurrentHand());
+
+
+        //check for Blackjack
+        checkBeginningBlackJack();
+
+        //asking player to hit or stay
+        player.decideMove();
+
+        //checks if player is busted after hitting
+        if (player.isBusted()) {
+            System.out.println(player.getName() + " has busted!");
+            startRound();
+        }
+
+        //looks at dealers Hand
+        dealer.resolveDealerHand();
+
+
+        //compares the End- Hands of player and dealer nad checks who won
+        resolveWinner(this.player, this.dealer);
 
     }
-
 
 
 }//end of class
