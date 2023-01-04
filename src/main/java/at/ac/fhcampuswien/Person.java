@@ -27,19 +27,6 @@ public abstract class Person {
     public void setCurrentHand(Hand currentHand) {
         this.currentHand = currentHand;
     }
-
-
-    //to check if a Person has a Ace in their hand
-    public boolean aceInHand(){
-        for (Card card : getCurrentHand().getInHand()) {
-            if (card.getName() == "Ace") {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     public boolean isBusted(){
 
         if (currentHand.sumOfCards() > 21){
@@ -59,6 +46,5 @@ public abstract class Person {
         }
         else return false;
     }
-
 
     }//end of class)
