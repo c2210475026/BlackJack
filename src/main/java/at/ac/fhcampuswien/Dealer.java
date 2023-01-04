@@ -38,6 +38,10 @@ public class Dealer extends Person {
         System.out.println("Dealer hand is : " + getCurrentHand().getHandCard(0) + " and [HIDDEN]");
     }
 
+    public void printFinalHand(){
+        System.out.println("Dealer hand is : " + getCurrentHand().getHandCard(0) + getCurrentHand().getHandCard(1));
+    }
+
 
 
 }//end of class
