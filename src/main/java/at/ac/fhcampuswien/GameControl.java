@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GameControl {
@@ -76,6 +77,39 @@ public class GameControl {
     }
 
 
+    //decides wether the Ace inHand should be 11 or 1
+    public void aceLogic(){
+        List<Card> playerHandCard = player.getCurrentHand().getInHand();
+        boolean ignoreFirstAce = false;
+        if (player.aceInHand()) {
+            for (Card card : playerHandCard) {
+                if (card.getName() == "Ace") {
+                    if (ignoreFirstAce) {
+                        card.setWert(1);
+                    } else {
+                        ignoreFirstAce = true;
+                    }
+                }
+            }
+        }
+
+
+        List<Card> dealerHandCards = dealer.getCurrentHand().getInHand();
+        if (dealer.aceInHand()){
+            for (Card card: dealerHandCards) {
+                if(card.getName()== "Ace"){
+                    if (ignoreFirstAce){
+                        card.setWert(1);
+                    }else {
+                        ignoreFirstAce = true;
+                    }
+                }
+            }
+        }
+    }
+
+
+
     public void startRound() {
 
         boolean begginingOfRound = true;
@@ -118,7 +152,7 @@ public class GameControl {
         dealer.resolveDealerHand();
 
 
-        //compares the End- Hands of player and dealer nad checks who won
+        //compares the End-Hands of player and dealer nad checks who won
         resolveWinner(this.player, this.dealer);
 
     }
