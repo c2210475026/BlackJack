@@ -60,26 +60,13 @@ public class Hand {
                 if (card.getName() == "Ace") {
                     if (ignoreFirstAce) {
                         card.setWert(1);
-                    } else
+                    } else {
                         ignoreFirstAce = true;
-                }
-            }
-        }
-
-        if (sumOfCards() >= 10) {
-            for (Card card : inHand) {
-                if (card.getName() == "Ace") {
-                    if (ignoreFirstAce) {
-                        card.setWert(1);
-                    } else
-                        ignoreFirstAce = true;
+                    }
                 }
             }
         }
     }
-
-
-
 
     @Override
     public String toString(){
