@@ -55,7 +55,7 @@ public class Hand {
     public void aceLogic() {
         boolean ignoreFirstAce = false;
 
-        if (sumOfCards() > 10) {
+        if (sumOfCards() >= 10) {
             for (Card card : inHand) {
                 if (card.getName() == "Ace") {
                     if (ignoreFirstAce) {
@@ -66,7 +66,7 @@ public class Hand {
             }
         }
 
-        if (sumOfCards() > 10) {
+        if (sumOfCards() >= 10) {
             for (Card card : inHand) {
                 if (card.getName() == "Ace") {
                     if (ignoreFirstAce) {

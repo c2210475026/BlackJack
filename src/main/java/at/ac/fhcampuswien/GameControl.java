@@ -48,13 +48,10 @@ public class GameControl {
         //tie
         if (playersHandSum == dealersHandSum) {
             System.out.println("It's a Tie");
-        }
-
-        //no one busted
-        if (!player.isBusted() && !dealer.isBusted()) {
+        }else if (!player.isBusted() && !dealer.isBusted()) { //no one busted
             if (playersHandSum > dealersHandSum) {
                 System.out.println(player.getName() + " has won! (case 1)");
-            } else {
+            } else if (playersHandSum < dealersHandSum){
                 System.out.println("Dealer has won! (case 1)");
             }
         }
