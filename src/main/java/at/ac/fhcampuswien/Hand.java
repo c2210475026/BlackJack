@@ -50,6 +50,37 @@ public class Hand {
         return sum;
     }
 
+
+    //decides weither the Ace inHand should be 11 or 1
+    public void aceLogic() {
+        boolean ignoreFirstAce = false;
+
+        if (sumOfCards() > 10) {
+            for (Card card : inHand) {
+                if (card.getName() == "Ace") {
+                    if (ignoreFirstAce) {
+                        card.setWert(1);
+                    } else
+                        ignoreFirstAce = true;
+                }
+            }
+        }
+
+        if (sumOfCards() > 10) {
+            for (Card card : inHand) {
+                if (card.getName() == "Ace") {
+                    if (ignoreFirstAce) {
+                        card.setWert(1);
+                    } else
+                        ignoreFirstAce = true;
+                }
+            }
+        }
+    }
+
+
+
+
     @Override
     public String toString(){
         String returnString="";
