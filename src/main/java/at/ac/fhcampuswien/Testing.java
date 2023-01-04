@@ -29,6 +29,28 @@ public class Testing {
 
         Dealer dealer1 = new Dealer(handOfDealer);
 
+        Stapel stapel = new Stapel();
+
+        System.out.println(stapel.getStapelList());
+
+        Card card1 = stapel.getStapelCard(0);
+
+        Card card2 = stapel.getStapelCard(13);
+
+        lind.getCurrentHand().getInHand().add(card1);
+        lind.getCurrentHand().getInHand().add(card2);
+
+        System.out.println(lind.getCurrentHand());
+
+        lind.getCurrentHand().aceLogic();
+
+        System.out.println(lind.getCurrentHand());
+
+
+
+
+
+
 
 //        System.out.println("LINE BREAK!!!!!!!!");
 //        System.out.println(dealer1.getName());
@@ -57,9 +79,9 @@ public class Testing {
 
 //        System.out.println(lind.aceInHand());
 
-        GameControl testGame = new GameControl(lind, dealer1);
+//        GameControl testGame = new GameControl(lind, dealer1);
 
-        testGame.startRound();
+//        testGame.startRound();
 
     }
 }
