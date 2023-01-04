@@ -14,17 +14,18 @@ public class Player extends Person {
     }
 
     public void decideMove(){
-        System.out.println("Enter (h) for hit or (s) for stay");
 
-        String in = sc.next().toLowerCase();
+        while (!isBusted()){
 
-        while (true){
+            System.out.println("Enter (h) for hit or (s) for stay");
+
+            String in = sc.next().toLowerCase();
 
             if (in.equals("h")){
                 System.out.println( getName() + " decided to hit");
                 hit();
                 System.out.println(getCurrentHand());
-                break;
+
             }else if(in.equals("s")) {
                 System.out.println( getName() + " decided to stay");
                 System.out.println(getCurrentHand());
