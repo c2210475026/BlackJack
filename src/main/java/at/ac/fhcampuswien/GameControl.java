@@ -40,85 +40,49 @@ public class GameControl {
     //Methods
 
     //compares card values from each hand
-    public Person resolveWinner(Player player, Dealer dealer) {
-
+    public void resolveWinner(Player player, Dealer dealer) {
         int playersHandSum = player.getCurrentHand().sumOfCards();
-
         int dealersHandSum = dealer.getCurrentHand().sumOfCards();
 
-        if (playersHandSum > dealersHandSum) {
-            System.out.println("Dealer has won!");
-            startRound();
-            return dealer;
-        } else if (playersHandSum < dealersHandSum) {
-            System.out.println(player.getName() + " has won!");
-            startRound();
-            return player;
-        } else {
-            startRound();
-            throw new RuntimeException("It's a Tie");
-        }
-    }
 
-    //looks if any Person has Blackjack in the beginning
-    public void checkBeginningBlackJack() {
-        if (dealer.checkIfBlackJack() && player.checkIfBlackJack()) {//if both have Blackjack it's a tie
-            System.out.println("Dealer and " + player.getName() + "both have Blackjack");
-        } else if (dealer.checkIfBlackJack()) {
-            dealer.getCurrentHand(); //Print the hand of the dealer if dealer has Blackjack
-            System.out.println("Dealer has Blackjack");
-            startRound();//restart
+        //tie
+        if (playersHandSum == dealersHandSum) {
+            System.out.println("It's a Tie");
         }
 
-        if (player.checkIfBlackJack()) {
-            System.out.println(player.getName() + " has Blackjack ");
-            startRound();//restart
-        }
-    }
-
-
-    //decides wether the Ace inHand should be 11 or 1
-    public void aceLogic(){
-        List<Card> playerHandCard = player.getCurrentHand().getInHand();
-        boolean ignoreFirstAce = false;
-        if (player.aceInHand()) {
-            for (Card card : playerHandCard) {
-                if (card.getName() == "Ace") {
-                    if (ignoreFirstAce) {
-                        card.setWert(1);
-                    } else {
-                        ignoreFirstAce = true;
-                    }
-                }
+        //no one busted
+        if (!player.isBusted() && !dealer.isBusted()) {
+            if (playersHandSum > dealersHandSum) {
+                System.out.println(player.getName() + " has won! (case 1)");
+            } else {
+                System.out.println("Dealer has won! (case 1)");
             }
         }
-
-
-        List<Card> dealerHandCards = dealer.getCurrentHand().getInHand();
-        if (dealer.aceInHand()){
-            for (Card card: dealerHandCards) {
-                if(card.getName()== "Ace"){
-                    if (ignoreFirstAce){
-                        card.setWert(1);
-                    }else {
-                        ignoreFirstAce = true;
-                    }
-                }
+        else if (!player.isBusted() && dealer.isBusted()) { //dealer busted but player did not
+            System.out.println(player.getName() + " has won! (case 2)");
+        }
+        else if (player.isBusted() && !dealer.isBusted()) { //player busted but dealer did not
+            System.out.println("Dealer has won! (case 2)");
+        }
+        else if (player.isBusted() && dealer.isBusted()) { //both busted
+            if (playersHandSum < dealersHandSum) {
+                System.out.println(player.getName() + " has won! (case 3)");
+            } else {
+                System.out.println("Dealer has won! (case 3)");
             }
         }
-    }
-
+    }//end of resolveWinner
 
 
     public void startRound() {
 
-        boolean begginingOfRound = true;
+        boolean beginningOfRound = true;
 
         //looks if the beginning of the round and clears the hand of player and dealer
-        if (begginingOfRound) {
+        if (beginningOfRound) {
             dealer.getCurrentHand().clearHand();
             player.getCurrentHand().clearHand();
-            begginingOfRound = false;
+            beginningOfRound = false;
         }
 
 
@@ -132,21 +96,17 @@ public class GameControl {
         //show dealers cards, with the hole card (hidden card)
         dealer.firstHand();
 
+
         //show the two cards of the player
+        player.getCurrentHand().aceLogic();
         System.out.println(player.getCurrentHand());
 
 
-        //check for Blackjack
-        checkBeginningBlackJack();
+        System.out.println(player.getName() + "s hand has the total value of " + player.getCurrentHand().sumOfCards());
 
         //asking player to hit or stay
         player.decideMove();
 
-        //checks if player is busted after hitting
-        if (player.isBusted()) {
-            System.out.println(player.getName() + " has busted!");
-            startRound();
-        }
 
         //looks at dealers Hand
         dealer.resolveDealerHand();

@@ -21,7 +21,7 @@ public class Dealer extends Person {
         while (getCurrentHand().sumOfCards() < 17){
             getCurrentHand().addgetCardToHand();
         }
-        System.out.println(getCurrentHand());
+        printFinalHand();
     }
 
 
@@ -39,7 +39,14 @@ public class Dealer extends Person {
     }
 
     public void printFinalHand(){
-        System.out.println("Dealer hand is : " + getCurrentHand().getHandCard(0) + getCurrentHand().getHandCard(1));
+        String returnString="";
+        for(Card card : getCurrentHand().getInHand()){
+            getCurrentHand().aceLogic();
+            returnString = returnString + card+", ";
+        }
+        System.out.println("Dealers current hand is: "+ returnString);
+        System.out.println("Dealers hand has the total value of "+getCurrentHand().sumOfCards());
+
     }
 
 
