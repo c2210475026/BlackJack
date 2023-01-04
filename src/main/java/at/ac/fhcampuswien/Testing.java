@@ -5,8 +5,8 @@ import java.util.Collections;
 public class Testing {
     public static void main(String[] args) {
         Stapel james = new Stapel();
-        System.out.println(james.getStapelList().size());
-        System.out.println(james.getStapelList());
+//        System.out.println(james.getStapelList().size());
+//        System.out.println(james.getStapelList());
         Hand jamesi = new Hand(james);
 //
 //        System.out.println(james.getStapelList());
@@ -19,11 +19,16 @@ public class Testing {
 //        System.out.println(jamesi.sumOfCards());
 
 
-        Player lind = new Player("Lind", jamesi);
+        Hand handOfPlayer = new Hand(james);
+
+
+        Player lind = new Player("Lind", handOfPlayer);
 
 
         Hand handOfDealer = new Hand(james);
+
         Dealer dealer1 = new Dealer(handOfDealer);
+
 
 //        System.out.println("LINE BREAK!!!!!!!!");
 //        System.out.println(dealer1.getName());
@@ -37,15 +42,24 @@ public class Testing {
 //        System.out.println(lind.getCurrentHand());
 
 //        dealer1.firstHand();
+//        System.out.println(lind.getCurrentHand());
+//        lind.decideMove();
+//
+//        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//
+//        System.out.println(lind.getCurrentHand());
+//
+//
+//        System.out.println(dealer1.getCurrentHand());
+//        dealer1.resolveDealerHand();
+//        System.out.println(dealer1.getCurrentHand());
+//        lind.getCurrentHand().drawHand();
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.println(lind.aceInHand());
 
-        System.out.println(lind.getCurrentHand());
+        GameControl testGame = new GameControl(lind, dealer1);
 
-        lind.decideMove();
-
-
-        System.out.println(lind.getCurrentHand());
+        testGame.startRound();
 
     }
 }
