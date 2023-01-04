@@ -28,6 +28,18 @@ public abstract class Person {
         this.currentHand = currentHand;
     }
 
+
+    //to check if a Person has a Ace in their hand
+    public boolean aceInHand(){
+        for (Card card : getCurrentHand().getInHand()) {
+            if (card.getName() == "Ace") {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public boolean isBusted(){
 
         if (currentHand.sumOfCards() > 21){
