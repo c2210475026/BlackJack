@@ -51,22 +51,35 @@ public class Hand {
     }
 
 
-    //decides weither the Ace inHand should be 11 or 1
-    public void aceLogic() {
-        boolean ignoreFirstAce = false;
 
-        if (sumOfCards() >= 10) {
-            for (Card card : inHand) {
-                if (card.getName() == "Ace") {
-                    if (ignoreFirstAce) {
-                        card.setWert(1);
-                    } else {
-                        ignoreFirstAce = true;
-                    }
-                }
+    public void aceLogic() {
+        //reset the value of all aces to 11
+        for (Card card : inHand) {
+            if (card.getName() == "Ace") {
+                card.setWert(11);
+            }
+        }
+
+        //iterate inHand and change the value of any ace so the handValue is not over 21
+        int handValue = sumOfCards();
+        for (Card card : inHand) {
+            if (card.getName() == "Ace" && handValue > 21) {
+                card.setWert(1);
+                handValue = sumOfCards();
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public String toString(){

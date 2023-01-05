@@ -13,9 +13,6 @@ public class Player extends Person {
         super(name,currentHand);
     }
 
-
-
-
     public void decideMove(){
 
         while (!isBusted()){
