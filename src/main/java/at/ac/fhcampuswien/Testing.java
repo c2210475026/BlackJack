@@ -2,6 +2,9 @@ package at.ac.fhcampuswien;
 
 import java.util.Collections;
 
+
+
+
 public class Testing {
     public static void main(String[] args) {
         Stapel james = new Stapel();
@@ -21,11 +24,16 @@ public class Testing {
 
         Hand handOfPlayer = new Hand(james);
 
+        Hand handicap = new Hand(james);
 
         Player lind = new Player("Lind", handOfPlayer);
 
+        Player alex = new Player("Alex", handicap);
+
 
         Hand handOfDealer = new Hand(james);
+
+
 
         Dealer dealer1 = new Dealer(handOfDealer);
 
@@ -33,18 +41,56 @@ public class Testing {
 
         System.out.println(stapel.getStapelList());
 
-        Card card1 = stapel.getStapelCard(0);
+        Card cardAce1 = stapel.getStapelCard(0);
 
-        Card card2 = stapel.getStapelCard(13);
+        Card cardAce2 = stapel.getStapelCard(13);
 
-        lind.getCurrentHand().getInHand().add(card1);
-        lind.getCurrentHand().getInHand().add(card2);
+        Card cardKing = stapel.getStapelCard(9);
 
-        System.out.println(lind.getCurrentHand());
+        Card cardThree = stapel.getStapelCard(2);
 
+        Card cardFour = stapel.getStapelCard(3);
+
+
+        lind.getCurrentHand().getInHand().add(cardAce1);
+        lind.getCurrentHand().getInHand().add(cardAce2);
         lind.getCurrentHand().aceLogic();
+        System.out.println("Lind: " + lind.getCurrentHand() + "hand value: " + lind.getCurrentHand().sumOfCards());
 
-        System.out.println(lind.getCurrentHand());
+        alex.getCurrentHand().getInHand().add(cardThree);
+        alex.getCurrentHand().getInHand().add(cardFour);
+        alex.getCurrentHand().getInHand().add(cardAce1);
+        alex.getCurrentHand().aceLogic();
+        System.out.println("╭―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╮");
+        System.out.println("│                                                                                                                                                       │");
+        System.out.println("│               Alex: " + alex.getCurrentHand() + "hand value: " + alex.getCurrentHand().sumOfCards() + "                                  │");
+        System.out.println("│                                                                                                                                                       │");
+        System.out.println("╰―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╯");
+//        System.out.println("Alex: " + alex.getCurrentHand() + "hand value: " + alex.getCurrentHand().sumOfCards());
+//        alex.getCurrentHand().getInHand().add(cardKing);
+//        System.out.println("Alex: " + alex.getCurrentHand() + "hand value: " + alex.getCurrentHand().sumOfCards());
+//        alex.getCurrentHand().aceLogic();
+//        System.out.println("Alex: " + alex.getCurrentHand() + "hand value: " + alex.getCurrentHand().sumOfCards());
+
+
+
+
+//
+//        System.out.println("Alex: " + alex.getCurrentHand());
+//
+//        System.out.println("Lind: " + lind.getCurrentHand());
+//
+//        System.out.println("Alex draw one card: ");
+//
+//        alex.getCurrentHand().getInHand().add(cardAce1);
+//
+//        lind.getCurrentHand().aceLogic();
+//
+//        alex.getCurrentHand().aceLogic();
+//
+//        System.out.println("Alex: " + alex.getCurrentHand());
+//
+//        System.out.println("Lind: " + lind.getCurrentHand());
 
 
 
@@ -80,7 +126,7 @@ public class Testing {
 //        System.out.println(lind.aceInHand());
 
 //        GameControl testGame = new GameControl(lind, dealer1);
-
+//
 //        testGame.startRound();
 
     }
