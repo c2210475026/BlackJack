@@ -43,7 +43,7 @@ public class GameControl {
     //Methods
 
     //compares card values from each hand
-    public void resolveWinner(Player player, Dealer dealer) {
+    public int resolveWinner(Player player, Dealer dealer) {
         int playersHandSum = player.getCurrentHand().sumOfCards();
         int dealersHandSum = dealer.getCurrentHand().sumOfCards();
 
@@ -51,30 +51,38 @@ public class GameControl {
         //tie
         if (playersHandSum == dealersHandSum) {
             System.out.println("It's a Tie");
+            return 0;
         }else if (!player.isBusted() && !dealer.isBusted()) { //no one busted
             if (playersHandSum > dealersHandSum) {
                 System.out.println(player.getName() + " has won! (case 1)");
+                return 1;
             } else if (playersHandSum < dealersHandSum){
                 System.out.println("Dealer has won! (case 1)");
+                return -1;
             }
         }
         else if (!player.isBusted() && dealer.isBusted()) { //dealer busted but player did not
             System.out.println(player.getName() + " has won! (case 2)");
+            return 1;
         }
         else if (player.isBusted() && !dealer.isBusted()) { //player busted but dealer did not
             System.out.println("Dealer has won! (case 2)");
+            return -1;
         }
         else if (player.isBusted() && dealer.isBusted()) { //both busted
             if (playersHandSum < dealersHandSum) {
                 System.out.println(player.getName() + " has won! (case 3)");
+                return 1;
             } else {
                 System.out.println("Dealer has won! (case 3)");
+                return -1;
             }
         }
+        return 999999;
     }//end of resolveWinner
 
 
-    public void startRound() {
+    public int startRound() {
 
         boolean beginningOfRound = true;
 
@@ -113,7 +121,7 @@ public class GameControl {
 
 
         //compares the End-Hands of player and dealer nad checks who won
-        resolveWinner(this.player, this.dealer);
+        return resolveWinner(this.player, this.dealer);
 
     }
         public void initializeGame(){
@@ -152,26 +160,39 @@ public class GameControl {
 
 
     public void oneGame(){
-        int balance = player.getBalance();
-        int pot = 0;
-
         initializeGame();
 
         while(player.getBalance()> 0){
+            int balance = player.getBalance();
             System.out.println();
             System.out.println("Starting the Round");
+            System.out.print("How much do you wanna bet?");
 
-            startRound();
+            int bet = sc.nextInt();
+            // er kann irgendwas eingeben
+
+            int winner = startRound();
+
+            switch (winner){
+                case 1:
+                    balance = balance + bet;
+                    break;
+                case -1:
+                    balance = balance - bet;
+                    break;
+                case 0:
+                    balance = balance;
+                    break;
+                default:
+                    System.out.println("Fehler bei Gewinnerbestimmung!");
+            }
+
+            player.setBalance(balance);
 
             if(player.getBalance() <= 0){
                 System.out.println("You have lost all your money");
                 break;
             }
-
-            if(player has won){
-                balance= player.getBalance() + pot;
-            }
-
         }
     }
 
