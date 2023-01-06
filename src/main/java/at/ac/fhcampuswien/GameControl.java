@@ -18,9 +18,8 @@ public class GameControl {
 
 
     //Constructor
-    public GameControl(Player player, Dealer dealer) {
-        this.player = player;
-        this.dealer = dealer;
+    public GameControl() {
+        initializeGame();
     }
 
     //Getter and Setter
@@ -164,8 +163,6 @@ public class GameControl {
 
 
     public void oneGame(){
-        initializeGame();
-
         while(player.getBalance()> 0){
             int balance = player.getBalance();
             System.out.println();
@@ -173,7 +170,11 @@ public class GameControl {
             System.out.print("How much do you wanna bet?");
 
             int bet = sc.nextInt();
-            // er kann irgendwas eingeben
+
+            while(bet > balance){
+                    System.out.println("Enter again, bet is higher than balance!");
+                    bet = sc.nextInt();
+            }
 
             int winner = startRound();
 
@@ -188,7 +189,7 @@ public class GameControl {
                     balance = balance;
                     break;
                 default:
-                    System.out.println("Fehler bei Gewinnerbestimmung!");
+                    System.out.println("Error: Winner determination");
             }
 
             player.setBalance(balance);
@@ -196,6 +197,16 @@ public class GameControl {
             if(player.getBalance() <= 0){
                 System.out.println("You have lost all your money");
                 break;
+            }
+
+            System.out.println("Do you wanna quit?[Type: y]");
+            String input = sc.nextLine();
+
+            if(input.equals("y")){
+                System.out.println("Game over!");
+                break;
+            }else{
+                System.out.println("Game is gonna continue");
             }
         }
     }

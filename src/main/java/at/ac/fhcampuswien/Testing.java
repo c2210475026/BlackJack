@@ -129,11 +129,11 @@ public class Testing {
 //
 //        testGame.startRound();
 
-        Stapel stapel1=new Stapel();
+        /*Stapel stapel1=new Stapel();
         Dealer dealer = new Dealer(stapel1);
         Player player = new Player("Alex",stapel1);
         GameControl game = new GameControl(player,dealer);
-        game.initializeGame();
+        game.initializeGame();*/
 
     }
 
