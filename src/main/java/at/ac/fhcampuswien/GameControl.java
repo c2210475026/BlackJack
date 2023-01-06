@@ -4,6 +4,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.sql.SQLOutput;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class GameControl {
@@ -200,7 +201,7 @@ public class GameControl {
             }
 
             System.out.println("Do you wanna quit?[Type: y]");
-            String input = sc.nextLine();
+            String input = sc.next();
 
             if(input.equals("y")){
                 System.out.println("Game over!");
