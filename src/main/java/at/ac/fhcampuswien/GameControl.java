@@ -194,6 +194,7 @@ public class GameControl {
             }
 
             player.setBalance(balance);
+            System.out.println("Your current balance is: "+ balance);
 
             if(player.getBalance() <= 0){
                 System.out.println("You have lost all your money");
