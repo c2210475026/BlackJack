@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Player extends Person {
 
-    private int coins;
+    private int balance;
 
     Scanner sc = new Scanner(System.in);
 
 
-    public Player(String name, Hand currentHand) {
-        super(name,currentHand);
+    public Player(String name, Stapel stapel) {
+        super(name,stapel);
     }
 
     public void decideMove(){

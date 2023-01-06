@@ -11,9 +11,11 @@ public class Dealer extends Person {
     int index = random.nextInt(nameOfDealers.length)-1;
 
 
-    public Dealer(Hand currentHand){
+    public Dealer(Stapel stapel){
+        super();
         super.setName(nameOfDealers[index]);
-        super.setCurrentHand(currentHand);
+        Hand hand = new Hand(stapel);
+        super.setCurrentHand(hand);
     }
 
 

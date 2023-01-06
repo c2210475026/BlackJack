@@ -5,12 +5,13 @@ public abstract class Person {
     private Hand currentHand;
 
     public Person(){
-
+        name ="";
+        currentHand = null;
     }
 
-    public Person(String name, Hand currentHand){
+    public Person(String name,Stapel stapel){
         this.name = name;
-        this.currentHand = currentHand;
+        this.currentHand = new Hand(stapel);
     }
     public String getName(){
         return name;
@@ -27,6 +28,7 @@ public abstract class Person {
     public void setCurrentHand(Hand currentHand) {
         this.currentHand = currentHand;
     }
+
     public boolean isBusted(){
 
         if (currentHand.sumOfCards() > 21){
