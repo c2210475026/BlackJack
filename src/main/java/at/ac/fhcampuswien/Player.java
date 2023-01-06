@@ -13,6 +13,14 @@ public class Player extends Person {
         super(name,stapel);
     }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
     public void decideMove(){
 
         while (!isBusted()){
