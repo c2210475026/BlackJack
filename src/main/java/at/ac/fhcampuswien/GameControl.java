@@ -137,8 +137,17 @@ public class GameControl {
             System.out.println("Each player has an independent game with the dealer,");
             System.out.println(" so it is possible for the dealer to lose to one player,");
             System.out.println(" but still beat the other players in the same round.");
-
-
+            System.out.println("----------------------------------------------------------------------------------------");
+            System.out.println("Whats your name?");
+            String playername = sc.next();
+            Stapel stapel = new Stapel();
+            player = new Player(playername,stapel);
+            dealer = new Dealer(stapel);
+            System.out.println("How much balance do you have?");
+            int balance = sc.nextInt();
+            player.setBalance(balance);
+            System.out.println("LET'S PLAY!!!!");
+            System.out.println("Your current Dealer is "+dealer.getName()+".");
         }
 
 

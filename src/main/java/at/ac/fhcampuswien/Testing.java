@@ -130,10 +130,8 @@ public class Testing {
 //        testGame.startRound();
 
         Stapel stapel1=new Stapel();
-        Hand hand = new Hand(stapel1);
-        Hand hand1= new Hand(stapel1);
-        Dealer dealer = new Dealer(hand1);
-        Player player = new Player("Alex",hand);
+        Dealer dealer = new Dealer(stapel1);
+        Player player = new Player("Alex",stapel1);
         GameControl game = new GameControl(player,dealer);
         game.initializeGame();
 
