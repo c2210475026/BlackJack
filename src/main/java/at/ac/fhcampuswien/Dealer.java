@@ -21,7 +21,8 @@ public class Dealer extends Person {
 
     public void resolveDealerHand(){
         while (getCurrentHand().sumOfCards() < 17){
-            getCurrentHand().addgetCardToHand();
+            System.out.print("Dealer drew Card: ");
+            System.out.println(getCurrentHand().addgetCardToHand());
         }
         printFinalHand();
     }

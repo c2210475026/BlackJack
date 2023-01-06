@@ -98,7 +98,7 @@ public class GameControl {
 
 
         //show the two cards of the player
-        player.getCurrentHand().aceLogic();
+        //player.getCurrentHand().aceLogic();
         System.out.println(player.getCurrentHand());
 
 
@@ -141,6 +141,29 @@ public class GameControl {
 
         }
 
+
+    public void oneGame(){
+        int balance = 1000;
+
+        while(player.balance> 0){
+            System.out.println();
+            System.out.println("Starting the next Round");
+            System.out.println("Enter your balance");
+            int balance1 = sc.nextInt();
+
+            startRound();
+
+            if(player.balance <= 0){
+                System.out.println("You have lost all your money");
+                break;
+            }
+
+            if(player has won){
+                balance= balance + pot;
+            }
+
+        }
+    }
 
 
 }//end of class
