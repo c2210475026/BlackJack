@@ -143,23 +143,24 @@ public class GameControl {
 
 
     public void oneGame(){
-        int balance = 1000;
+        int balance = player.getBalance();
+        int pot = 0;
 
-        while(player.balance> 0){
+        initializeGame();
+
+        while(player.getBalance()> 0){
             System.out.println();
-            System.out.println("Starting the next Round");
-            System.out.println("Enter your balance");
-            int balance1 = sc.nextInt();
+            System.out.println("Starting the Round");
 
             startRound();
 
-            if(player.balance <= 0){
+            if(player.getBalance() <= 0){
                 System.out.println("You have lost all your money");
                 break;
             }
 
             if(player has won){
-                balance= balance + pot;
+                balance= player.getBalance() + pot;
             }
 
         }
