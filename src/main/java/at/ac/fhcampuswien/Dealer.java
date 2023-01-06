@@ -42,7 +42,7 @@ public class Dealer extends Person {
     }
 
     public void firstHand(){
-        System.out.println("Dealer hand is : " + getCurrentHand().getHandCard(0) + " and [HIDDEN]");
+        System.out.println("Dealer hand is " + getCurrentHand().getHandCard(0) + " and [HIDDEN]");
     }
 
     public void printFinalHand(){
@@ -51,7 +51,7 @@ public class Dealer extends Person {
             getCurrentHand().aceLogic();
             returnString = returnString + card+", ";
         }
-        System.out.println("Dealers current hand is: "+ returnString);
+        System.out.println("Dealers current hand is "+ returnString);
         System.out.println("Dealers hand has the total value of "+getCurrentHand().sumOfCards());
 
     }

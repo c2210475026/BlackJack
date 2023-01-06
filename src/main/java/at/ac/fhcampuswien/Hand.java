@@ -77,6 +77,6 @@ public class Hand {
         for(Card card : inHand){
             returnString = returnString + card+", ";
         }
-        return "You current hand is: "+ returnString;
+        return "You current hand is "+ returnString;
     }
 }
