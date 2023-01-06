@@ -142,7 +142,7 @@ public class GameControl {
         }
 
 
-    public void oneGame(){
+   /* public void oneGame(){
         int balance = 1000;
 
         while(player.balance> 0){
@@ -156,14 +156,14 @@ public class GameControl {
             if(player.balance <= 0){
                 System.out.println("You have lost all your money");
                 break;
-            }
+            }*/
 
-            if(player has won){
+            /*if(player has won){
                 balance= balance + pot;
-            }
+            }*/
 
-        }
-    }
+      //  }
+//    }
 
 
 }//end of class
