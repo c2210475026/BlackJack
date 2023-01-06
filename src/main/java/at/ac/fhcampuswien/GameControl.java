@@ -120,23 +120,24 @@ public class GameControl {
             System.out.println("Welcome to BlackJack!");
             System.out.println("");
             System.out.println("BlackJack rules : ");
-            System.out.println("");
             System.out.println("The players get two cards. The Dealer gets two cards as well.");
             System.out.println("One face up and the other face down.");
             System.out.println("Cards 2 through 10 are worth their face value,");
-            System.out.println(" and face cards (jack, queen, king) are also worth 10. ");
+            System.out.println("and face cards (jack, queen, king) are also worth 10. ");
             System.out.println("An ace's value is 11 unless this would cause the player to bust,");
-            System.out.println(  " in which case it is worth 1");
+            System.out.println("in which case it is worth 1");
             System.out.println("Blackjack hands are scored by their point total.");
-            System.out.println(" The hand with the highest total wins as long as it doesn't exceed 21. ");
+            System.out.println("The hand with the highest total wins as long as it doesn't exceed 21. ");
             System.out.println("a hand with a higher total than 21 is said to bust. ");
             System.out.println("The goal of each player is to beat the dealer by having the higher, unbusted hand.");
             System.out.println("If the player busts he loses, even if the dealer also busts.");
-            System.out.println(" If both the player and the dealer have the same point value, it is called a push, ");
+            System.out.println("If both the player and the dealer have the same point value, it is called a push, ");
             System.out.println("and neither player nor dealer wins the hand.");
             System.out.println("Each player has an independent game with the dealer,");
-            System.out.println(" so it is possible for the dealer to lose to one player,");
-            System.out.println(" but still beat the other players in the same round.");
+            System.out.println("so it is possible for the dealer to lose to one player,");
+            System.out.println("but still beat the other players in the same round.");
+            System.out.println("Are you ready?");
+            
             System.out.println("----------------------------------------------------------------------------------------");
             System.out.println("Whats your name?");
             String playername = sc.next();
@@ -148,6 +149,9 @@ public class GameControl {
             player.setBalance(balance);
             System.out.println("LET'S PLAY!!!!");
             System.out.println("Your current Dealer is "+dealer.getName()+".");
+
+
+
         }
 
 
