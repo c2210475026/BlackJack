@@ -18,6 +18,10 @@ public class Dealer extends Person {
         super.setCurrentHand(hand);
     }
 
+    @Override
+    public String getName() {
+        return super.getName();
+    }
 
     public void resolveDealerHand(){
         while (getCurrentHand().sumOfCards() < 17){
