@@ -11,7 +11,6 @@ public class Hand {
     public Hand(Stapel stapel){
         inHand=new ArrayList<>();
         this.stapel=stapel;
-        drawHand();
     }
 
     public List<Card> getInHand(){
@@ -51,12 +50,33 @@ public class Hand {
         return sum;
     }
 
+
+
+    public void aceLogic() {
+        //reset the value of all aces to 11
+        for (Card card : inHand) {
+            if (card.getName() == "Ace") {
+                card.setWert(11);
+            }
+        }
+
+        //iterate inHand and change the value of any ace so the handValue is not over 21
+        int handValue = sumOfCards();
+        for (Card card : inHand) {
+            if (card.getName() == "Ace" && handValue > 21) {
+                card.setWert(1);
+                handValue = sumOfCards();
+            }
+        }
+    }
+
+
     @Override
     public String toString(){
         String returnString="";
         for(Card card : inHand){
             returnString = returnString + card+", ";
         }
-        return "You current hand is: "+ returnString;
+        return "You current hand is "+ returnString;
     }
 }
