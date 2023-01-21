@@ -8,7 +8,7 @@ public class Dealer extends Person {
     private String[] nameOfDealers = {"Doyle Brunson", "Daniel Negreanu", "Dave Ulliott", "Michael Mizrachi", "Chris Ferguson"};
 
     Random random = new Random();
-    int index = random.nextInt(nameOfDealers.length)-1;
+    int index = random.nextInt(nameOfDealers.length);
 
 
     public Dealer(Stapel stapel){

@@ -14,6 +14,7 @@ public class Card {
         this.name=name;
     }
 
+
     //GETTER AND SETTER
     public int getWert(){
         return wert;
@@ -52,3 +53,5 @@ public class Card {
         return name +" Of "+cardName + " : " + wert;
     }
 }
+
+

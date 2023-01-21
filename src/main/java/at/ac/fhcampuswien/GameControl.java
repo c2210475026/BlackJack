@@ -57,24 +57,24 @@ public class GameControl {
                 System.out.println(player.getName() + " has won! (case 1)");
                 return 1;
             } else if (playersHandSum < dealersHandSum){
-                System.out.println("Dealer has won! (case 1)");
+                System.out.println("Dealer has won!");
                 return -1;
             }
         }
         else if (!player.isBusted() && dealer.isBusted()) { //dealer busted but player did not
-            System.out.println(player.getName() + " has won! (case 2)");
+            System.out.println(player.getName() + " has won!");
             return 1;
         }
         else if (player.isBusted() && !dealer.isBusted()) { //player busted but dealer did not
-            System.out.println("Dealer has won! (case 2)");
+            System.out.println("Dealer has won!");
             return -1;
         }
         else if (player.isBusted() && dealer.isBusted()) { //both busted
             if (playersHandSum < dealersHandSum) {
-                System.out.println(player.getName() + " has won! (case 3)");
+                System.out.println(player.getName() + " has won! ");
                 return 1;
             } else {
-                System.out.println("Dealer has won! (case 3)");
+                System.out.println("Dealer has won!");
                 return -1;
             }
         }
@@ -157,9 +157,6 @@ public class GameControl {
             player.setBalance(balance);
             System.out.println("LET'S PLAY!!!!");
             System.out.println("Your current Dealer is "+dealer.getName()+".");
-
-
-
         }
 
 
