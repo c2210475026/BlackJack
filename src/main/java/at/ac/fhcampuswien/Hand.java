@@ -73,10 +73,14 @@ public class Hand {
 
     @Override
     public String toString(){
-        String returnString="";
-        for(Card card : inHand){
-            returnString = returnString + card+", ";
+         StringBuilder returnString = new StringBuilder();
+        for(int i = 0; i < inHand.size(); i++){
+            returnString.append(inHand.get(i));
+            if(i < inHand.size() - 1) {
+                returnString.append(", ");
+            }
         }
-        return "You current hand is "+ returnString;
+        return "Your current hand is "+ returnString.toString();
     }
+
 }
