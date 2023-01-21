@@ -48,7 +48,7 @@ public class Card {
                 cardName = "Clubs";
                 break;
             default:
-                return "Card have wrong symbol";
+                return "Card has wrong symbol";
         }
         return name +" Of "+cardName + " : " + wert;
     }
