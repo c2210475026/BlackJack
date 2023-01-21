@@ -54,26 +54,32 @@ public class GameControl {
             return 0;
         }else if (!player.isBusted() && !dealer.isBusted()) { //no one busted
             if (playersHandSum > dealersHandSum) {
+               printCongratulation();
                 System.out.println(player.getName() + " has won! (case 1)");
                 return 1;
             } else if (playersHandSum < dealersHandSum){
+                printCongratulation();
                 System.out.println("Dealer has won!");
                 return -1;
             }
         }
         else if (!player.isBusted() && dealer.isBusted()) { //dealer busted but player did not
+            printCongratulation();
             System.out.println(player.getName() + " has won!");
             return 1;
         }
         else if (player.isBusted() && !dealer.isBusted()) { //player busted but dealer did not
+            printCongratulation();
             System.out.println("Dealer has won!");
             return -1;
         }
         else if (player.isBusted() && dealer.isBusted()) { //both busted
             if (playersHandSum < dealersHandSum) {
+                printCongratulation();
                 System.out.println(player.getName() + " has won! ");
                 return 1;
             } else {
+                printCongratulation();
                 System.out.println("Dealer has won!");
                 return -1;
             }
@@ -211,6 +217,15 @@ public class GameControl {
         }
     }
 
+    private void printCongratulation(){
+        System.out.println("    _   _   _   _   _ ");
+        System.out.println("   / \\ / \\ / \\ / \\ / \\");
+        System.out.println("  ( C | O | N | G | R )");
+        System.out.println("   \\_/ \\_/ \\_/ \\_/ \\_/");
+        System.out.println("    A   T   U   L   A");
+        System.out.println("    T   I   O   T   I");
+        System.out.println("    I   O   N   N   O");
+    }
 
 }//end of class
 
