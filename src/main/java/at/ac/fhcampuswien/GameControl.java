@@ -165,7 +165,7 @@ public class GameControl {
             int balance = player.getBalance();
             System.out.println();
             System.out.println("Starting the Round");
-            System.out.print("How much do you wanna bet?");
+            System.out.println("How much do you wanna bet?");
 
             int bet = sc.nextInt();
 
