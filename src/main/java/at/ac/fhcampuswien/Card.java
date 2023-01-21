@@ -36,16 +36,16 @@ public class Card {
         String cardName;
         switch (symbol){
             case 'S':
-                cardName = "Spades";
+                cardName = "♠";
                 break;
             case 'D':
-                cardName = "Diamonds";
+                cardName = "♦";
                 break;
             case 'H':
-                cardName = "Hearts";
+                cardName = "♥";
                 break;
             case 'C':
-                cardName = "Clubs";
+                cardName = "♣";
                 break;
             default:
                 return "Card has wrong symbol";
