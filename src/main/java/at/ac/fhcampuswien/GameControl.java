@@ -125,9 +125,9 @@ public class GameControl {
 
     }
         public void initializeGame(){
-            System.out.println("Welcome to BlackJack!");
-            System.out.println("");
-            System.out.println("BlackJack rules : ");
+            System.out.println("\033[1m\033[36mWelcome to BlackJack!");
+            System.out.println("\033[0m"); //Reset the font to the default
+            System.out.println("\033[36mBlackJack rules : ");
             System.out.println("The players get two cards. The Dealer gets two cards as well.");
             System.out.println("One face up and the other face down.");
             System.out.println("Cards 2 through 10 are worth their face value,");
