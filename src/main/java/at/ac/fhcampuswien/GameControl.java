@@ -163,15 +163,51 @@ public class GameControl {
         player = new Player(playername, stack);
         dealer = new Dealer(stack);
         System.out.println("How much balance do you have?");//asking for balance
-
-       // while (!sc.hasNextInt() || correctNumber){
-       //     System.out.println("Please put in a number!\n"+"Number has to be higher than 0, lower than max Integer(2147483647)");
-        //    sc.next();
-      //  }
-        int balance = sc.nextInt();
+        String balanceInput = sc.next();
+        while (!isGoodNumber(balanceInput)){
+            balanceInput = sc.next();
+        }
+        int balance = Integer.parseInt(balanceInput);
         player.setBalance(balance);
         System.out.println("LET'S PLAY!!!!");
         System.out.println("Your current Dealer is "+dealer.getName()+".");
+    }
+
+    private boolean isGoodNumber(String input){
+        if(input==null || input.equals("")){
+            System.out.println("There is no input. Please type something.");
+            return false;
+        }else {
+            try {
+                int inputInt = Integer.parseInt(input);
+                return true;
+            }catch (NumberFormatException e){
+                System.out.println("Please put in a Number.");
+                System.out.println("It should be above 0 & below max Integer(2147483647).");
+                return false;
+            }
+        }
+    }
+
+    private boolean isBetValid(int balance, String betInput){
+        if(betInput==null || betInput.equals("")){
+            System.out.println("There is no input. Please type something.");
+            return false;
+        }else {
+            try {
+                int betInt = Integer.parseInt(betInput);
+                if (betInt > balance){
+                    System.out.println("Bet is higher than your Balance. Enter again!");
+                    return false;
+                }else {
+                    return true;
+                }
+            }catch (NumberFormatException e){
+                System.out.println("Please put in a Number.");
+                System.out.println("It should be above 0 & below max Integer(2147483647).");
+                return false;
+            }
+        }
     }
 
 
@@ -182,13 +218,13 @@ public class GameControl {
             System.out.println("Starting the Round");
             System.out.println("How much do you wanna bet?"); // betsize
 
-            int bet = sc.nextInt();
+            String betInput = sc.next();
 
             // if bet is higher than balance, asking for a new bet, should be lower than balance
-            while(bet > balance){
-                    System.out.println("Enter again, bet is higher than balance!");
-                    bet = sc.nextInt();
+            while(!isBetValid(balance,betInput)){
+                betInput= sc.next();
             }
+            int bet = Integer.parseInt(betInput);
 
             int winner = startRound();
 
