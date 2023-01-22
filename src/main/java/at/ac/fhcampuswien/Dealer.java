@@ -25,7 +25,7 @@ public class Dealer extends Person {
     //If total value of Cards is less than 17, dealer draws a Card.
     public void resolveDealerHand(){
         while (getCurrentHand().sumOfCards() < 17){
-            System.out.print("Dealer drew Card: ");
+            System.out.print("Dealer drew Card:\n");
             System.out.println(getCurrentHand().addgetCardToHand());
         }
         printFinalHand();
@@ -51,9 +51,9 @@ public class Dealer extends Person {
         String returnString="";
         for(Card card : getCurrentHand().getInHand()){
             getCurrentHand().aceLogic();
-            returnString = returnString + card+", ";
+            returnString = returnString + card;
         }
-        System.out.println("Dealers current hand is "+ returnString);
+        System.out.println("Dealers current hand is:\n"+ returnString);
         System.out.println("Dealers hand has the total value of "+getCurrentHand().sumOfCards());
     }
 
