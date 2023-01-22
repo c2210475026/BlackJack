@@ -34,13 +34,6 @@ public class Card {
         return symbol;
     }
 
-    private void printCards(){
-
-        System.out.println(" _____ \n|A    |\n|  ♠  |\n|    A|\n ‾‾‾‾‾ ");
-        System.out.println(" _____ \n|A    |\n|  ♦  |\n|    A|\n ‾‾‾‾‾ ");
-        System.out.println(" _____ \n|A    |\n|  ♥  |\n|    A|\n ‾‾‾‾‾ ");
-        System.out.println(" _____ \n|A    |\n|  ♣  |\n|    A|\n ‾‾‾‾‾ ");
-    }
 
     // CASE SWITCH FOR SYMBOLS
     public String toString(){

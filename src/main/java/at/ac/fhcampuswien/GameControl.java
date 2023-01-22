@@ -215,9 +215,13 @@ public class GameControl {
                 break;
             }
 
-            System.out.println("Do you wanna quit?[Type: y]");
+            System.out.println("Do you wanna quit? Type: ['y' for yes, 'n' for no].");
             String input = sc.next();
 
+            while (!input.equals("y") && !input.equals("n")){
+                System.out.println("Please enter 'y' for yes OR 'n' for no");
+                input=sc.next();
+            }
             if(input.equals("y")){
                 System.out.println("Game over!");
                 break;
