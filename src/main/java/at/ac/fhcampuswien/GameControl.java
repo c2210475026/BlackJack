@@ -39,7 +39,7 @@ public class GameControl {
         // Check for Blackjack
         if (playerBlackJack && !dealerBlackjack) {
             printCongratulation();
-            System.out.println(player.getName()+" has BlackJack!");
+            System.out.println(player.getName() + " has BlackJack!");
             return 1;
         } else if (!playerBlackJack && dealerBlackjack) {
             System.out.println("Dealer has BlackJack");
@@ -48,7 +48,7 @@ public class GameControl {
 
         // Check for tie
         if (playersHandSum == dealersHandSum) {
-            if (amountCardsPlayer < amountCardsDealer){
+            if (amountCardsPlayer < amountCardsDealer) {
                 printCongratulation();
                 System.out.println(player.getName() + " has won!");
                 return 1;
@@ -69,14 +69,8 @@ public class GameControl {
             System.out.println(player.getName() + " has won!");
             return 1;
         } else if (playerBusted && dealerBusted) { // both busted
-            if (playersHandSum < dealersHandSum) { // counting which total of Cards has less value
-                printCongratulation();
-                System.out.println(player.getName() + " has won! ");
-                return 1;
-            } else {
-                System.out.println("Dealer has won!");
-                return -1;
-            }
+            System.out.println("Dealer has won!");
+            return -1;
         }
         // Neither player nor dealer is busted
         if (playersHandSum > dealersHandSum) {
@@ -134,7 +128,7 @@ public class GameControl {
     }
 
     // Rules of Black Jack
-    public void initializeGame(){
+    public void initializeGame() {
         System.out.println("\033[1m\033[36mWelcome to BlackJack!");
         System.out.println("\033[0m"); //Reset the font to the default
         System.out.println("\033[36mBlackJack rules : ");
@@ -170,7 +164,7 @@ public class GameControl {
         int balance = Integer.parseInt(balanceInput);
         player.setBalance(balance);
         System.out.println("LET'S PLAY!!!!");
-        System.out.println("Your current Dealer is "+dealer.getName()+".");
+        System.out.println("Your current Dealer is " + dealer.getName() + ".");
     }
 
     private boolean isGoodNumber(String input){
@@ -211,8 +205,8 @@ public class GameControl {
     }
 
 
-    public void oneGame(){
-        while(player.getBalance()> 0){
+    public void oneGame() {
+        while (player.getBalance() > 0) {
             int balance = player.getBalance();
             System.out.println();
             System.out.println("Starting the Round");
@@ -229,7 +223,7 @@ public class GameControl {
             int winner = startRound();
 
             // switch case, if the money goes to dealer, player or tie
-            switch (winner){
+            switch (winner) {
                 case 1:
                     balance = balance + bet;
                     break;
@@ -244,9 +238,9 @@ public class GameControl {
             }
 
             player.setBalance(balance);
-            System.out.println("Your current balance is: "+ balance);
+            System.out.println("Your current balance is: " + balance);
 
-            if(player.getBalance() <= 0){
+            if (player.getBalance() <= 0) {
                 System.out.println("You have lost all your money");
                 break;
             }
@@ -254,21 +248,21 @@ public class GameControl {
             System.out.println("Do you wanna quit? Type: ['y' for yes, 'n' for no].");
             String input = sc.next();
 
-            while (!input.equals("y") && !input.equals("n")){
+            while (!input.equals("y") && !input.equals("n")) {
                 System.out.println("Please enter 'y' for yes OR 'n' for no");
-                input=sc.next();
+                input = sc.next();
             }
-            if(input.equals("y")){
+            if (input.equals("y")) {
                 System.out.println("Game over!");
                 break;
-            }else{
+            } else {
                 System.out.println("Game is gonna continue");
             }
 
         }
     }
 
-    private void printCongratulation(){
+    private void printCongratulation() {
         System.out.println("    _   _   _   _   _   _   _   _ ");
         System.out.println("   / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\");
         System.out.println("  ( C | O | N | G | R | A | T | S )");
