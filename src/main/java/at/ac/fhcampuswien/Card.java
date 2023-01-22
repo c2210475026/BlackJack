@@ -62,8 +62,8 @@ public class Card {
                 return "Card has wrong symbol";
         }
         //return name +" Of "+cardName + " : " + value;
-        String outputSmallNumber = " _____ \n|%s   |\n|  %s |\n|   %s|\n ‾‾‾‾‾ "+"\n";
-          String outputBigNumber = " _____ \n|%s   |\n|  %s |\n|   %s|\n ‾‾‾‾‾ "+"\n";
+        String outputSmallNumber = " _____ \n|%s    |\n|  %s  |\n|    %s|\n ‾‾‾‾‾ "+"\n";
+          String outputBigNumber = " _____ \n|%s    |\n|  %s  |\n|    %s|\n ‾‾‾‾‾ "+"\n";
 
         if (name.equals("10")){
             return String.format(outputBigNumber,name,cardName,name);
