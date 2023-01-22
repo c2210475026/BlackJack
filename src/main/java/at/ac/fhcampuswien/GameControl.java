@@ -1,10 +1,5 @@
 package at.ac.fhcampuswien;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.sql.SQLOutput;
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class GameControl {
@@ -22,24 +17,6 @@ public class GameControl {
     public GameControl() {
         initializeGame();
     }
-
-    //Getter and Setter
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Dealer getDealer() {
-        return dealer;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public void setDealer(Dealer dealer) {
-        this.dealer = dealer;
-    }
-
     //Methods
 
     //compares card values from each hand
@@ -92,7 +69,7 @@ public class GameControl {
             System.out.println(player.getName() + " has won!");
             return 1;
         } else if (playerBusted && dealerBusted) { // both busted
-            if (playersHandSum < dealersHandSum) {
+            if (playersHandSum < dealersHandSum) { // counting which total of Cards has less value
                 printCongratulation();
                 System.out.println(player.getName() + " has won! ");
                 return 1;
@@ -155,6 +132,8 @@ public class GameControl {
         return resolveWinner(this.player, this.dealer);
 
     }
+
+    // Rules of Black Jack
         public void initializeGame(){
             System.out.println("\033[1m\033[36mWelcome to BlackJack!");
             System.out.println("\033[0m"); //Reset the font to the default
@@ -178,12 +157,12 @@ public class GameControl {
             System.out.println("Are you ready?");
             
             System.out.println("----------------------------------------------------------------------------------------");
-            System.out.println("Whats your name?");
+            System.out.println("Whats your name?"); // asking name
             String playername = sc.next();
-            Stapel stapel = new Stapel();
-            player = new Player(playername,stapel);
-            dealer = new Dealer(stapel);
-            System.out.println("How much balance do you have?");
+            Stack stack = new Stack();
+            player = new Player(playername, stack);
+            dealer = new Dealer(stack);
+            System.out.println("How much balance do you have?");//asking for balance
             int balance = sc.nextInt();
             player.setBalance(balance);
             System.out.println("LET'S PLAY!!!!");
@@ -196,10 +175,11 @@ public class GameControl {
             int balance = player.getBalance();
             System.out.println();
             System.out.println("Starting the Round");
-            System.out.println("How much do you wanna bet?");
+            System.out.println("How much do you wanna bet?"); // betsize
 
             int bet = sc.nextInt();
 
+            // if bet is higher than balance, asking for a new bet, should be lower than balance
             while(bet > balance){
                     System.out.println("Enter again, bet is higher than balance!");
                     bet = sc.nextInt();
@@ -207,6 +187,7 @@ public class GameControl {
 
             int winner = startRound();
 
+            // switch case, if the money goes to dealer, player or tie
             switch (winner){
                 case 1:
                     balance = balance + bet;

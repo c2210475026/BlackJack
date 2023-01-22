@@ -9,9 +9,9 @@ public abstract class Person {
         currentHand = null;
     }
 
-    public Person(String name,Stapel stapel){
+    public Person(String name, Stack stack){
         this.name = name;
-        this.currentHand = new Hand(stapel);
+        this.currentHand = new Hand(stack);
     }
     public String getName(){
         return name;
@@ -29,6 +29,7 @@ public abstract class Person {
         this.currentHand = currentHand;
     }
 
+    // if value of current hand is over 21 a person lost
     public boolean isBusted(){
 
         if (currentHand.sumOfCards() > 21){
@@ -37,10 +38,12 @@ public abstract class Person {
         return false;
     }
 
+    // adding a card to hand
     public void hit(){
         getCurrentHand().addgetCardToHand();
     }
 
+    // checking if a person has exactly the value 21.
     public boolean checkIfBlackJack(){
         if(getCurrentHand().sumOfCards()==21 && getCurrentHand().getInHand().size() == 2){
             return true;
