@@ -215,10 +215,14 @@ public class GameControl {
                 break;
             }
 
-            System.out.println("Do you wanna quit?[Type: y]");
+            System.out.println("Do you wanna quit?[Type: yes]");
             String input = sc.next();
+            while(!input.equalsIgnoreCase("yes")) {
+                System.out.println("Invalid input. Please type yes to quit.");
+                input = sc.next();
+            }
 
-            if(input.equals("y")){
+            if(input.equals("yes")){
                 System.out.println("Game over!");
                 break;
             }else{
