@@ -12,6 +12,8 @@ public class GameControl {
 
     private Dealer dealer;
 
+    private Stack stack;
+
 
     //Constructor
     public GameControl() {
@@ -152,9 +154,9 @@ public class GameControl {
 
         System.out.println("----------------------------------------------------------------------------------------");
         System.out.println("Whats your name?"); // asking name
-        String playername = sc.next();
-        Stack stack = new Stack();
-        player = new Player(playername, stack);
+        String playerName = sc.next();
+        stack = new Stack();
+        player = new Player(playerName, stack);
         dealer = new Dealer(stack);
         System.out.println("How much balance do you have?");//asking for balance
         String balanceInput = sc.next();
@@ -256,7 +258,9 @@ public class GameControl {
             } else {
                 System.out.println("Game is gonna continue");
             }
-
+            if(!stack.isStackValid()){
+                stack.reNewStack();
+            }
         }
     }
 

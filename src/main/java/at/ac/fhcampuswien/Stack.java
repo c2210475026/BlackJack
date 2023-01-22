@@ -129,4 +129,13 @@ public class Stack {
         deleteStapelCard(randomInt);
         return card;
     }
+
+    public boolean isStackValid(){
+        return stackList.size() >= 156;
+    }
+
+    public void reNewStack(){
+        stackList.clear();
+        fillStack();
+    }
 }
