@@ -134,40 +134,45 @@ public class GameControl {
     }
 
     // Rules of Black Jack
-        public void initializeGame(){
-            System.out.println("\033[1m\033[36mWelcome to BlackJack!");
-            System.out.println("\033[0m"); //Reset the font to the default
-            System.out.println("\033[36mBlackJack rules : ");
-            System.out.println("The players get two cards. The Dealer gets two cards as well.");
-            System.out.println("One face up and the other face down.");
-            System.out.println("Cards 2 through 10 are worth their face value,");
-            System.out.println("and face cards (jack, queen, king) are also worth 10. ");
-            System.out.println("An ace's value is 11 unless this would cause the player to bust,");
-            System.out.println("in which case it is worth 1");
-            System.out.println("Blackjack hands are scored by their point total.");
-            System.out.println("The hand with the highest total wins as long as it doesn't exceed 21. ");
-            System.out.println("a hand with a higher total than 21 is said to bust. ");
-            System.out.println("The goal of each player is to beat the dealer by having the higher, unbusted hand.");
-            System.out.println("If the player busts he loses, even if the dealer also busts.");
-            System.out.println("If both the player and the dealer have the same point value, it is called a push, ");
-            System.out.println("and neither player nor dealer wins the hand.");
-            System.out.println("Each player has an independent game with the dealer,");
-            System.out.println("so it is possible for the dealer to lose to one player,");
-            System.out.println("but still beat the other players in the same round.");
-            System.out.println("Are you ready?");
-            
-            System.out.println("----------------------------------------------------------------------------------------");
-            System.out.println("Whats your name?"); // asking name
-            String playername = sc.next();
-            Stack stack = new Stack();
-            player = new Player(playername, stack);
-            dealer = new Dealer(stack);
-            System.out.println("How much balance do you have?");//asking for balance
-            int balance = sc.nextInt();
-            player.setBalance(balance);
-            System.out.println("LET'S PLAY!!!!");
-            System.out.println("Your current Dealer is "+dealer.getName()+".");
-        }
+    public void initializeGame(){
+        System.out.println("\033[1m\033[36mWelcome to BlackJack!");
+        System.out.println("\033[0m"); //Reset the font to the default
+        System.out.println("\033[36mBlackJack rules : ");
+        System.out.println("The players get two cards. The Dealer gets two cards as well.");
+        System.out.println("One face up and the other face down.");
+        System.out.println("Cards 2 through 10 are worth their face value,");
+        System.out.println("and face cards (jack, queen, king) are also worth 10. ");
+        System.out.println("An ace's value is 11 unless this would cause the player to bust,");
+        System.out.println("in which case it is worth 1");
+        System.out.println("Blackjack hands are scored by their point total.");
+        System.out.println("The hand with the highest total wins as long as it doesn't exceed 21. ");
+        System.out.println("a hand with a higher total than 21 is said to bust. ");
+        System.out.println("The goal of each player is to beat the dealer by having the higher, unbusted hand.");
+        System.out.println("If the player busts he loses, even if the dealer also busts.");
+        System.out.println("If both the player and the dealer have the same point value, it is called a push, ");
+        System.out.println("and neither player nor dealer wins the hand.");
+        System.out.println("Each player has an independent game with the dealer,");
+        System.out.println("so it is possible for the dealer to lose to one player,");
+        System.out.println("but still beat the other players in the same round.");
+        System.out.println("Are you ready?");
+
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("Whats your name?"); // asking name
+        String playername = sc.next();
+        Stack stack = new Stack();
+        player = new Player(playername, stack);
+        dealer = new Dealer(stack);
+        System.out.println("How much balance do you have?");//asking for balance
+
+       // while (!sc.hasNextInt() || correctNumber){
+       //     System.out.println("Please put in a number!\n"+"Number has to be higher than 0, lower than max Integer(2147483647)");
+        //    sc.next();
+      //  }
+        int balance = sc.nextInt();
+        player.setBalance(balance);
+        System.out.println("LET'S PLAY!!!!");
+        System.out.println("Your current Dealer is "+dealer.getName()+".");
+    }
 
 
     public void oneGame(){

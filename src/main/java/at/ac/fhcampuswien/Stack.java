@@ -29,9 +29,9 @@ public class Stack {
                 for(int cardValue = 1; cardValue<=9;cardValue++) {
                     Card nCard;
                     if(cardValue==1){
-                        nCard = new Card(11,currentSymbol, "Ace");
+                        nCard = new Card(11,currentSymbol, "A");
                     }else{
-                        nCard = new Card(cardValue,currentSymbol,decideName(cardValue));
+                        nCard = new Card(cardValue,currentSymbol,Integer.toString(cardValue));
                     }
                     stackList.add(nCard);
                 }
@@ -84,16 +84,16 @@ public class Stack {
 
         switch (value){
             case 1:
-                name="Ten";
+                name="10";
                 break;
             case 2:
-                name="Jack";
+                name="J";
                 break;
             case 3:
-                name="Queen";
+                name="Q";
                 break;
             case 4:
-                name="King";
+                name="K";
                 break;
             default:
                 return "Error with high value name";
