@@ -53,7 +53,27 @@ public class Card {
             default:
                 return "Card has wrong symbol";
         }
-        return name +" Of "+cardName + " : " + value;
+        //return name +" Of "+cardName + " : " + value;
+        String outputSmallNumber = ".-------."+ "\n"+
+                "| %1s    |"+ "\n"+
+                "|       |"+ "\n"+
+                "|  %2s   |"+ "\n"+
+                "|       |"+ "\n"+
+                "|    %1s |"+ "\n"+
+                "'-------'"+ "\n";
+
+        String outputBigNumber = ".-------."+ "\n"+
+                "| %1s    |"+ "\n"+
+                "|       |"+ "\n"+
+                "|  %2s   |"+ "\n"+
+                "|       |"+ "\n"+
+                "|    %1s |"+ "\n"+
+                "'-------'"+ "\n";
+        if (value <10){
+            return String.format(outputSmallNumber,cardName,value,cardName);
+        }else{
+            return String.format(outputBigNumber,cardName,value,cardName);
+        }
     }
 }
 

@@ -224,13 +224,13 @@ public class GameControl {
     }
 
     private void printCongratulation(){
-        System.out.println("    _   _   _   _   _ ");
-        System.out.println("   / \\ / \\ / \\ / \\ / \\");
-        System.out.println("  ( C | O | N | G | R )");
-        System.out.println("   \\_/ \\_/ \\_/ \\_/ \\_/");
-        System.out.println("    A   T   U   L   A");
-        System.out.println("    T   I   O   T   I");
-        System.out.println("    I   O   N   N   O");
+        System.out.println("    _   _   _   _   _   _   _   _ ");
+        System.out.println("   / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\");
+        System.out.println("  ( C | O | N | G | R | A | T | S )");
+        System.out.println("   \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/");
+        System.out.println("    |   |   |   |   |   |   |   |");
+        System.out.println("    |   |   |   |   |   |   |   |");
+        System.out.println("    |   |   |   |   |   |   |   |");
     }
 
 }//end of class

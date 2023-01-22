@@ -43,7 +43,7 @@ public class Dealer extends Person {
 
     // Shows first card and second card is hidden.
     public void firstHand(){
-        System.out.println("Dealer hand is " + getCurrentHand().getHandCard(0) + " and [HIDDEN]");
+        System.out.println("Dealer hand is:\n" + getCurrentHand().getHandCard(0) + " and [HIDDEN]");
     }
 
     //prints the current hand and total value of the dealer.

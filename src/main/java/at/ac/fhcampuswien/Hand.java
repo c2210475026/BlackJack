@@ -81,11 +81,11 @@ public class Hand {
          StringBuilder returnString = new StringBuilder();
         for(int i = 0; i < inHand.size(); i++){
             returnString.append(inHand.get(i));
-            if(i < inHand.size() - 1) {
-                returnString.append(", ");
-            }
+            //if(i < inHand.size() - 1) {
+            //    returnString.append(", ");
+            //}
         }
-        return "Your current hand is "+ returnString.toString();
+        return "Your current hand is:\n"+ returnString;
     }
 
 }
