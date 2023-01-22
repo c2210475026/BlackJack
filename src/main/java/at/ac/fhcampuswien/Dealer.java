@@ -35,7 +35,6 @@ public class Dealer extends Person {
     @Override
     public boolean checkIfBlackJack(){
         if(getCurrentHand().sumOfCards()==21 && getCurrentHand().getInHand().size() == 2){
-            System.out.println("Dealer" + "(" + getName() +") has BlackJack!");
             return true;
         }
         else return false;

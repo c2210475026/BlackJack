@@ -47,44 +47,69 @@ public class GameControl {
         int playersHandSum = player.getCurrentHand().sumOfCards();
         int dealersHandSum = dealer.getCurrentHand().sumOfCards();
 
+        boolean playerBlackJack = player.checkIfBlackJack();
+        boolean dealerBlackjack = dealer.checkIfBlackJack();
 
-        //tie
+        boolean playerBusted = player.isBusted();
+        boolean dealerBusted = dealer.isBusted();
+
+        int amountCardsPlayer = player.getCurrentHand().getInHand().size();
+        int amountCardsDealer = dealer.getCurrentHand().getInHand().size();
+
+
+        //check if player or dealer has Blackjack
+
+        // Check for Blackjack
+        if (playerBlackJack && !dealerBlackjack) {
+            printCongratulation();
+            System.out.println(player.getName()+" has BlackJack!");
+            return 1;
+        } else if (!playerBlackJack && dealerBlackjack) {
+            System.out.println("Dealer has BlackJack");
+            return -1;
+        }
+
+        // Check for tie
         if (playersHandSum == dealersHandSum) {
-            System.out.println("It's a Tie");
-            return 0;
-        }else if (!player.isBusted() && !dealer.isBusted()) { //no one busted
-            if (playersHandSum > dealersHandSum) {
-               printCongratulation();
-                System.out.println(player.getName() + " has won! (case 1)");
-                return 1;
-            } else if (playersHandSum < dealersHandSum){
+            if (amountCardsPlayer < amountCardsDealer){
                 printCongratulation();
+                System.out.println(player.getName() + " has won!");
+                return 1;
+            } else if (amountCardsPlayer > amountCardsDealer) {
                 System.out.println("Dealer has won!");
                 return -1;
             }
+
+            System.out.println("It's a Tie");
+            return 0;
         }
-        else if (!player.isBusted() && dealer.isBusted()) { //dealer busted but player did not
+        // Check if anyone is busted
+        if (playerBusted && !dealerBusted) { // player busted but dealer did not
+            System.out.println("Dealer has won!");
+            return -1;
+        } else if (!playerBusted && dealerBusted) { // dealer busted but player did not
             printCongratulation();
             System.out.println(player.getName() + " has won!");
             return 1;
-        }
-        else if (player.isBusted() && !dealer.isBusted()) { //player busted but dealer did not
-            printCongratulation();
-            System.out.println("Dealer has won!");
-            return -1;
-        }
-        else if (player.isBusted() && dealer.isBusted()) { //both busted
+        } else if (playerBusted && dealerBusted) { // both busted
             if (playersHandSum < dealersHandSum) {
                 printCongratulation();
                 System.out.println(player.getName() + " has won! ");
                 return 1;
             } else {
-                printCongratulation();
                 System.out.println("Dealer has won!");
                 return -1;
             }
         }
-        return 999999;
+        // Neither player nor dealer is busted
+        if (playersHandSum > dealersHandSum) {
+            printCongratulation();
+            System.out.println(player.getName() + " has won!");
+            return 1;
+        } else {
+            System.out.println("Dealer has won!");
+            return -1;
+        }
     }//end of resolveWinner
 
 
