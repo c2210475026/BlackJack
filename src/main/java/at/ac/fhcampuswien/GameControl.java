@@ -174,7 +174,13 @@ public class GameControl {
         }else {
             try {
                 int inputInt = Integer.parseInt(input);
-                return true;
+                if(inputInt<=0){
+                    System.out.println("Please type a number greater than 0.");
+                    return false;
+                }else {
+                    return true;
+                }
+
             }catch (NumberFormatException e){
                 System.out.println("Please put in a Number.");
                 System.out.println("It should be above 0 & below max Integer(2147483647).");
@@ -184,23 +190,15 @@ public class GameControl {
     }
 
     private boolean isBetValid(int balance, String betInput){
-        if(betInput==null || betInput.equals("")){
-            System.out.println("There is no input. Please type something.");
-            return false;
-        }else {
-            try {
-                int betInt = Integer.parseInt(betInput);
-                if (betInt > balance){
-                    System.out.println("Bet is higher than your Balance. Enter again!");
-                    return false;
-                }else {
-                    return true;
-                }
-            }catch (NumberFormatException e){
-                System.out.println("Please put in a Number.");
-                System.out.println("It should be above 0 & below max Integer(2147483647).");
+        if (isGoodNumber(betInput)){
+            if (Integer.parseInt(betInput)>balance){
+                System.out.println("Bet is higher than Balance. Enter valid Bet!");
                 return false;
+            }else {
+                return true;
             }
+        }else {
+            return false;
         }
     }
 
