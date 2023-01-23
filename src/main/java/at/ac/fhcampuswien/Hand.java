@@ -2,50 +2,55 @@ package at.ac.fhcampuswien;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Hand {
     private List<Card> inHand;
-    private Stapel stapel;
+    private Stack stack;
 
-    public Hand(Stapel stapel){
+    // Constructor
+    public Hand(Stack stack){
         inHand=new ArrayList<>();
-        this.stapel=stapel;
+        this.stack = stack;
     }
 
     public List<Card> getInHand(){
         return inHand;
     }
 
+    //at the beginning of a round drawing two cards.
     public void drawHand(){
         for (int i=0;i<2;i++){
-           inHand.add(stapel.drawCard());
+           inHand.add(stack.drawCard());
         }
     }
 
+    //from list seeing card depending on index
     public Card getHandCard(int index){
         return inHand.get(index);
     }
 
+    // no cards
     public void clearHand(){
         inHand.clear();
     }
 
+    // drawing from stack and adding to Hand and showing
     public Card addgetCardToHand(){
-        Card card = stapel.drawCard();
+        Card card = stack.drawCard();
         inHand.add(card);
         return card;
     }
 
     public void addCardToHand(){
-        inHand.add(stapel.drawCard());
+        inHand.add(stack.drawCard());
     }
 
+    // counting the value of cards in hand
     public int sumOfCards(){
         int sum = 0;
         for(int i=0; i<inHand.size();i++){
             Card card = inHand.get(i);
-            sum = sum + card.getWert();
+            sum = sum + card.getValue();
         }
         return sum;
     }
@@ -56,7 +61,7 @@ public class Hand {
         //reset the value of all aces to 11
         for (Card card : inHand) {
             if (card.getName() == "Ace") {
-                card.setWert(11);
+                card.setValue(11);
             }
         }
 
@@ -64,7 +69,7 @@ public class Hand {
         int handValue = sumOfCards();
         for (Card card : inHand) {
             if (card.getName() == "Ace" && handValue > 21) {
-                card.setWert(1);
+                card.setValue(1);
                 handValue = sumOfCards();
             }
         }
@@ -73,10 +78,14 @@ public class Hand {
 
     @Override
     public String toString(){
-        String returnString="";
-        for(Card card : inHand){
-            returnString = returnString + card+", ";
+         StringBuilder returnString = new StringBuilder();
+        for(int i = 0; i < inHand.size(); i++){
+            returnString.append(inHand.get(i));
+            //if(i < inHand.size() - 1) {
+            //    returnString.append(", ");
+            //}
         }
-        return "You current hand is "+ returnString;
+        return "Your current hand is:\n"+ returnString;
     }
+
 }

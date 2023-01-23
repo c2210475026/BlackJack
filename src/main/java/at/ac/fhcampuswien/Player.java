@@ -9,8 +9,8 @@ public class Player extends Person {
     Scanner sc = new Scanner(System.in);
 
 
-    public Player(String name, Stapel stapel) {
-        super(name,stapel);
+    public Player(String name, Stack stack) {
+        super(name, stack);
     }
 
     public void setBalance(int balance) {
@@ -23,12 +23,14 @@ public class Player extends Person {
 
     public void decideMove(){
 
+        // if player has as value less than 21.
         while (!isBusted()){
 
             System.out.println("Enter (h) for hit or (s) for stay");
 
             String in = sc.next().toLowerCase();
 
+            // player draws a card, and checks value of current hand.
             if (in.equals("h")){
                 System.out.println( getName() + " decided to hit");
                 hit();
@@ -36,6 +38,7 @@ public class Player extends Person {
                 System.out.println(getCurrentHand());
                 System.out.println(getName() +"s hand has the total value of "+getCurrentHand().sumOfCards());
 
+                // player does not draw a card and checks value of current hand.
             }else if(in.equals("s")) {
                 System.out.println( getName() + " decided to stay");
                 getCurrentHand().aceLogic();

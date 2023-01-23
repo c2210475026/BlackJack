@@ -1,10 +1,5 @@
 package at.ac.fhcampuswien;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.sql.SQLOutput;
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class GameControl {
@@ -17,29 +12,13 @@ public class GameControl {
 
     private Dealer dealer;
 
+    private Stack stack;
+
 
     //Constructor
     public GameControl() {
         initializeGame();
     }
-
-    //Getter and Setter
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Dealer getDealer() {
-        return dealer;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public void setDealer(Dealer dealer) {
-        this.dealer = dealer;
-    }
-
     //Methods
 
     //compares card values from each hand
@@ -47,38 +26,63 @@ public class GameControl {
         int playersHandSum = player.getCurrentHand().sumOfCards();
         int dealersHandSum = dealer.getCurrentHand().sumOfCards();
 
+        boolean playerBlackJack = player.checkIfBlackJack();
+        boolean dealerBlackjack = dealer.checkIfBlackJack();
 
-        //tie
-        if (playersHandSum == dealersHandSum) {
-            System.out.println("It's a Tie");
-            return 0;
-        }else if (!player.isBusted() && !dealer.isBusted()) { //no one busted
-            if (playersHandSum > dealersHandSum) {
-                System.out.println(player.getName() + " has won! (case 1)");
-                return 1;
-            } else if (playersHandSum < dealersHandSum){
-                System.out.println("Dealer has won! (case 1)");
-                return -1;
-            }
-        }
-        else if (!player.isBusted() && dealer.isBusted()) { //dealer busted but player did not
-            System.out.println(player.getName() + " has won! (case 2)");
+        boolean playerBusted = player.isBusted();
+        boolean dealerBusted = dealer.isBusted();
+
+        int amountCardsPlayer = player.getCurrentHand().getInHand().size();
+        int amountCardsDealer = dealer.getCurrentHand().getInHand().size();
+
+
+        //check if player or dealer has Blackjack
+
+        // Check for Blackjack
+        if (playerBlackJack && !dealerBlackjack) {
+            printCongratulation();
+            System.out.println(player.getName() + " has BlackJack!");
             return 1;
-        }
-        else if (player.isBusted() && !dealer.isBusted()) { //player busted but dealer did not
-            System.out.println("Dealer has won! (case 2)");
+        } else if (!playerBlackJack && dealerBlackjack) {
+            System.out.println("Dealer has BlackJack");
             return -1;
         }
-        else if (player.isBusted() && dealer.isBusted()) { //both busted
-            if (playersHandSum < dealersHandSum) {
-                System.out.println(player.getName() + " has won! (case 3)");
+
+        // Check for tie
+        if (playersHandSum == dealersHandSum) {
+            if (amountCardsPlayer < amountCardsDealer) {
+                printCongratulation();
+                System.out.println(player.getName() + " has won!");
                 return 1;
-            } else {
-                System.out.println("Dealer has won! (case 3)");
+            } else if (amountCardsPlayer > amountCardsDealer) {
+                System.out.println("Dealer has won!");
                 return -1;
             }
+
+            System.out.println("It's a Tie");
+            return 0;
         }
-        return 999999;
+        // Check if anyone is busted
+        if (playerBusted && !dealerBusted) { // player busted but dealer did not
+            System.out.println("Dealer has won!");
+            return -1;
+        } else if (!playerBusted && dealerBusted) { // dealer busted but player did not
+            printCongratulation();
+            System.out.println(player.getName() + " has won!");
+            return 1;
+        } else if (playerBusted && dealerBusted) { // both busted
+            System.out.println("Dealer has won!");
+            return -1;
+        }
+        // Neither player nor dealer is busted
+        if (playersHandSum > dealersHandSum) {
+            printCongratulation();
+            System.out.println(player.getName() + " has won!");
+            return 1;
+        } else {
+            System.out.println("Dealer has won!");
+            return -1;
+        }
     }//end of resolveWinner
 
 
@@ -124,62 +128,102 @@ public class GameControl {
         return resolveWinner(this.player, this.dealer);
 
     }
-        public void initializeGame(){
-            System.out.println("Welcome to BlackJack!");
-            System.out.println("");
-            System.out.println("BlackJack rules : ");
-            System.out.println("The players get two cards. The Dealer gets two cards as well.");
-            System.out.println("One face up and the other face down.");
-            System.out.println("Cards 2 through 10 are worth their face value,");
-            System.out.println("and face cards (jack, queen, king) are also worth 10. ");
-            System.out.println("An ace's value is 11 unless this would cause the player to bust,");
-            System.out.println("in which case it is worth 1");
-            System.out.println("Blackjack hands are scored by their point total.");
-            System.out.println("The hand with the highest total wins as long as it doesn't exceed 21. ");
-            System.out.println("a hand with a higher total than 21 is said to bust. ");
-            System.out.println("The goal of each player is to beat the dealer by having the higher, unbusted hand.");
-            System.out.println("If the player busts he loses, even if the dealer also busts.");
-            System.out.println("If both the player and the dealer have the same point value, it is called a push, ");
-            System.out.println("and neither player nor dealer wins the hand.");
-            System.out.println("Each player has an independent game with the dealer,");
-            System.out.println("so it is possible for the dealer to lose to one player,");
-            System.out.println("but still beat the other players in the same round.");
-            System.out.println("Are you ready?");
-            
-            System.out.println("----------------------------------------------------------------------------------------");
-            System.out.println("Whats your name?");
-            String playername = sc.next();
-            Stapel stapel = new Stapel();
-            player = new Player(playername,stapel);
-            dealer = new Dealer(stapel);
-            System.out.println("How much balance do you have?");
-            int balance = sc.nextInt();
-            player.setBalance(balance);
-            System.out.println("LET'S PLAY!!!!");
-            System.out.println("Your current Dealer is "+dealer.getName()+".");
 
+    // Rules of Black Jack
+    public void initializeGame() {
+        System.out.println("\033[1m\033[36mWelcome to BlackJack!");
+        System.out.println("\033[0m"); //Reset the font to the default
+        System.out.println("\033[36mBlackJack rules : ");
+        System.out.println("The players get two cards. The Dealer gets two cards as well.");
+        System.out.println("One face up and the other face down.");
+        System.out.println("Cards 2 through 10 are worth their face value,");
+        System.out.println("and face cards (jack, queen, king) are also worth 10. ");
+        System.out.println("An ace's value is 11 unless this would cause the player to bust,");
+        System.out.println("in which case it is worth 1");
+        System.out.println("Blackjack hands are scored by their point total.");
+        System.out.println("The hand with the highest total wins as long as it doesn't exceed 21. ");
+        System.out.println("a hand with a higher total than 21 is said to bust. ");
+        System.out.println("The goal of each player is to beat the dealer by having the higher, unbusted hand.");
+        System.out.println("If the player busts he loses, even if the dealer also busts.");
+        System.out.println("If both the player and the dealer have the same point value, it is called a push, ");
+        System.out.println("and neither player nor dealer wins the hand.");
+        System.out.println("Each player has an independent game with the dealer,");
+        System.out.println("so it is possible for the dealer to lose to one player,");
+        System.out.println("but still beat the other players in the same round.");
+        System.out.println("Are you ready?");
 
-
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("Whats your name?"); // asking name
+        String playerName = sc.next();
+        stack = new Stack();
+        player = new Player(playerName, stack);
+        dealer = new Dealer(stack);
+        System.out.println("How much balance do you have?");//asking for balance
+        String balanceInput = sc.next();
+        while (!isGoodNumber(balanceInput)){
+            balanceInput = sc.next();
         }
+        int balance = Integer.parseInt(balanceInput);
+        player.setBalance(balance);
+        System.out.println("LET'S PLAY!!!!");
+        System.out.println("Your current Dealer is " + dealer.getName() + ".");
+    }
+
+    private boolean isGoodNumber(String input){
+        if(input==null || input.equals("")){
+            System.out.println("There is no input. Please type something.");
+            return false;
+        }else {
+            try {
+                int inputInt = Integer.parseInt(input);
+                if(inputInt<=0){
+                    System.out.println("Please type a number greater than 0.");
+                    return false;
+                }else {
+                    return true;
+                }
+
+            }catch (NumberFormatException e){
+                System.out.println("Please put in a Number.");
+                System.out.println("It should be above 0 & below max Integer(2147483647).");
+                return false;
+            }
+        }
+    }
+
+    private boolean isBetValid(int balance, String betInput){
+        if (isGoodNumber(betInput)){
+            if (Integer.parseInt(betInput)>balance){
+                System.out.println("Bet is higher than Balance. Enter valid Bet!");
+                return false;
+            }else {
+                return true;
+            }
+        }else {
+            return false;
+        }
+    }
 
 
-    public void oneGame(){
-        while(player.getBalance()> 0){
+    public void oneGame() {
+        while (player.getBalance() > 0) {
             int balance = player.getBalance();
             System.out.println();
             System.out.println("Starting the Round");
-            System.out.print("How much do you wanna bet?");
+            System.out.println("How much do you wanna bet?"); // betsize
 
-            int bet = sc.nextInt();
+            String betInput = sc.next();
 
-            while(bet > balance){
-                    System.out.println("Enter again, bet is higher than balance!");
-                    bet = sc.nextInt();
+            // if bet is higher than balance, asking for a new bet, should be lower than balance
+            while(!isBetValid(balance,betInput)){
+                betInput= sc.next();
             }
+            int bet = Integer.parseInt(betInput);
 
             int winner = startRound();
 
-            switch (winner){
+            // switch case, if the money goes to dealer, player or tie
+            switch (winner) {
                 case 1:
                     balance = balance + bet;
                     break;
@@ -194,26 +238,41 @@ public class GameControl {
             }
 
             player.setBalance(balance);
-            System.out.println("Your current balance is: "+ balance);
+            System.out.println("Your current balance is: " + balance);
 
-            if(player.getBalance() <= 0){
+            if (player.getBalance() <= 0) {
                 System.out.println("You have lost all your money");
                 break;
             }
 
-            System.out.println("Do you wanna quit?[Type: y]");
+            System.out.println("Do you wanna quit? Type: ['y' for yes, 'n' for no].");
             String input = sc.next();
 
-            if(input.equals("y")){
+            while (!input.equals("y") && !input.equals("n")) {
+                System.out.println("Please enter 'y' for yes OR 'n' for no");
+                input = sc.next();
+            }
+            if (input.equals("y")) {
                 System.out.println("Game over!");
                 break;
-            }else{
+            } else {
                 System.out.println("Game is gonna continue");
             }
-
+            if(!stack.isStackValid()){
+                stack.reNewStack();
+            }
         }
     }
 
+    private void printCongratulation() {
+        System.out.println("    _   _   _   _   _   _   _   _ ");
+        System.out.println("   / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\");
+        System.out.println("  ( C | O | N | G | R | A | T | S )");
+        System.out.println("   \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/");
+        System.out.println("    |   |   |   |   |   |   |   |");
+        System.out.println("    |   |   |   |   |   |   |   |");
+        System.out.println("    |   |   |   |   |   |   |   |");
+    }
 
 }//end of class
 

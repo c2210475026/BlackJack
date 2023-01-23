@@ -1,8 +1,5 @@
 package at.ac.fhcampuswien;
 
-import java.util.Collections;
-
-
 
 
 public class Testing {
@@ -134,7 +131,58 @@ public class Testing {
         Player player = new Player("Alex",stapel1);
         GameControl game = new GameControl(player,dealer);
         game.initializeGame();*/
+//
+//        Stapel newStapel = new Stapel();
+//
+//        Card ace = new Card(11, 'H', "Ace");
+//        Card ten = new Card(10, 'H', "King");
+//        Card five = new Card(5,'H', "Five");
+//        Card six = new Card(6, 'H', "Six");
+//        Card three = new Card(3, 'H', "Three");
+//        Card four = new Card(4, 'H', "Four");
+//        Card two = new Card(2, 'H', "Two");
+//        Card nine = new Card(9, 'H', "Nine");
+//
+//        Card one = new Card(1, 'H', "Ace");
+//
+//
+//        Card ace2 = new Card(11, 'D', "Ace");
+//
+//
+//        Player player1 = new Player("Lind", newStapel);
+//
+//        Dealer dealer1 = new Dealer(newStapel);
+//
+//        GameControl newGame = new GameControl();
+//
+//
+//
+//        player1.getCurrentHand().getInHand().add(ace);
+//        player1.getCurrentHand().getInHand().add(nine);
+//        player1.getCurrentHand().getInHand().add(one);
+//
+//
+//
+//
+//        dealer1.getCurrentHand().getInHand().add(ace2);
+//        dealer1.getCurrentHand().getInHand().add(five);
+//        dealer1.getCurrentHand().getInHand().add(three);
+//        dealer1.getCurrentHand().getInHand().add(two);
+//
+//
+//
+//
+//        System.out.println("Players hand right here: ");
+//        System.out.println(player1.getCurrentHand());
+//
+//        System.out.println("Dealers hand right here: ");
+//        System.out.println(dealer1.getCurrentHand());
+//
+//        newGame.resolveWinner(player1, dealer1);
+//
 
     }
+
+
 
 }

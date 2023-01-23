@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Stapel {
-    private List<Card> stapelList;
+public class Stack {
+    private List<Card> stackList;
 
-    public Stapel(){
-        stapelList =new ArrayList<>();
-        fillStapel();
+    public Stack(){
+        stackList =new ArrayList<>();
+        fillStack();
     }
 
-    private void fillStapel(){
+    // filling the stack with 6 decks.
+    private void fillStack(){
         for(int decks=0; decks<6;decks++){
             for(int symbolNumbers=0; symbolNumbers<4;symbolNumbers++){
                 char currentSymbol;
@@ -28,20 +29,21 @@ public class Stapel {
                 for(int cardValue = 1; cardValue<=9;cardValue++) {
                     Card nCard;
                     if(cardValue==1){
-                        nCard = new Card(11,currentSymbol, "Ace");
+                        nCard = new Card(11,currentSymbol, "A");
                     }else{
-                        nCard = new Card(cardValue,currentSymbol,decideName(cardValue));
+                        nCard = new Card(cardValue,currentSymbol,Integer.toString(cardValue));
                     }
-                    stapelList.add(nCard);
+                    stackList.add(nCard);
                 }
                 for(int countHighCardNumbers = 1; countHighCardNumbers <= 4; countHighCardNumbers++){
                     Card hCards = new Card(10,currentSymbol,decideHighName(countHighCardNumbers));
-                    stapelList.add(hCards);
+                    stackList.add(hCards);
                 }
             }
         }
     }
 
+    // deciding name for number cards except 10.
     private String decideName(int value){
         String name;
 
@@ -76,21 +78,22 @@ public class Stapel {
         return name;
     }
 
+    //deciding name for face cards and 10.
     private String decideHighName(int value){
         String name;
 
         switch (value){
             case 1:
-                name="Ten";
+                name="10";
                 break;
             case 2:
-                name="Jack";
+                name="J";
                 break;
             case 3:
-                name="Queen";
+                name="Q";
                 break;
             case 4:
-                name="King";
+                name="K";
                 break;
             default:
                 return "Error with high value name";
@@ -98,27 +101,41 @@ public class Stapel {
         return name;
     }
 
-    public List<Card> getStapelList() {
-        return stapelList;
+    public List<Card> getStackList() {
+        return stackList;
     }
 
+
+    // show card at chosen index from list.
     public Card getStapelCard(int position){
-        return stapelList.get(position);
+        return stackList.get(position);
     }
 
+    //remove card at chosen index from list.
     public void deleteStapelCard(int position){
-        stapelList.remove(position);
+        stackList.remove(position);
     }
 
+    //same not used
     public void deleteStapelCard(Card card){
-        stapelList.remove(card);
+        stackList.remove(card);
     }
 
+    //draw random card
     public Card drawCard(){
         Random random = new Random();
-        int randomInt = random.nextInt(stapelList.size())-1;
+        int randomInt = random.nextInt(stackList.size())-1;
         Card card = getStapelCard(randomInt);
         deleteStapelCard(randomInt);
         return card;
+    }
+
+    public boolean isStackValid(){
+        return stackList.size() >= 156;
+    }
+
+    public void reNewStack(){
+        stackList.clear();
+        fillStack();
     }
 }
