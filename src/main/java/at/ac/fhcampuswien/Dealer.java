@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Dealer extends Person {
 
@@ -24,11 +25,17 @@ public class Dealer extends Person {
 
     //If total value of Cards is less than 17, dealer draws a Card.
     public void resolveDealerHand(){
-        while (getCurrentHand().sumOfCards() < 17){
-            System.out.print("Dealer drew Card:\n");
-            System.out.println(getCurrentHand().addgetCardToHand());
+        try {
+            while (getCurrentHand().sumOfCards() < 17){
+                System.out.print("Dealer drew Card:\n");
+                Thread.sleep(700);
+                System.out.println(getCurrentHand().addgetCardToHand());
+            }
+            Thread.sleep(1000);
+            printFinalHand();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        printFinalHand();
     }
 
 
