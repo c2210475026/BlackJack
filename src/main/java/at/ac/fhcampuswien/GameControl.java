@@ -257,6 +257,7 @@ public class GameControl {
             }
             if (input.equals("y")) {
                 System.out.println("Game over!");
+                sc.close();
                 break;
             } else {
                 System.out.println("Game is gonna continue");
