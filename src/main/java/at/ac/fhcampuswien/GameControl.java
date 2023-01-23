@@ -130,27 +130,46 @@ public class GameControl {
     }
 
     // Rules of Black Jack
-    public void initializeGame() {
-        System.out.println("\033[1m\033[36mWelcome to BlackJack!");
-        System.out.println("\033[0m"); //Reset the font to the default
-        System.out.println("\033[36mBlackJack rules : ");
-        System.out.println("The players get two cards. The Dealer gets two cards as well.");
-        System.out.println("One face up and the other face down.");
-        System.out.println("Cards 2 through 10 are worth their face value,");
-        System.out.println("and face cards (jack, queen, king) are also worth 10. ");
-        System.out.println("An ace's value is 11 unless this would cause the player to bust,");
-        System.out.println("in which case it is worth 1");
-        System.out.println("Blackjack hands are scored by their point total.");
-        System.out.println("The hand with the highest total wins as long as it doesn't exceed 21. ");
-        System.out.println("a hand with a higher total than 21 is said to bust. ");
-        System.out.println("The goal of each player is to beat the dealer by having the higher, unbusted hand.");
-        System.out.println("If the player busts he loses, even if the dealer also busts.");
-        System.out.println("If both the player and the dealer have the same point value, it is called a push, ");
-        System.out.println("and neither player nor dealer wins the hand.");
-        System.out.println("Each player has an independent game with the dealer,");
-        System.out.println("so it is possible for the dealer to lose to one player,");
-        System.out.println("but still beat the other players in the same round.");
-        System.out.println("Are you ready?");
+
+
+        public void initializeGame() {
+            String[] messages = {
+                    "\033[1m\033[36mWelcome to BlackJack!",
+                    "\033[0m",
+                    "\033[36mBlackJack rules : ",
+                    "The players get two cards. The Dealer gets two cards as well.",
+                    "One face up and the other face down.",
+                    "Cards 2 through 10 are worth their face value,",
+                    "and face cards (jack, queen, king) are also worth 10.",
+                    "An ace's value is 11 unless this would cause the player to bust,",
+                    "in which case it is worth 1",
+                    "Blackjack hands are scored by their point total.",
+                    "The hand with the highest total wins as long as it doesn't exceed 21.",
+                    "a hand with a higher total than 21 is said to bust.",
+                    "The goal of each player is to beat the dealer by having the higher, unbusted hand.",
+                    "If the player busts he loses, even if the dealer also busts.",
+                    "If both the player and the dealer have the same point value, it is called a push,",
+                    "and neither player nor dealer wins the hand.",
+                    "Each player has an independent game with the dealer,",
+                    "so it is possible for the dealer to lose to one player,",
+                    "but still beat the other players in the same round.",
+                    "Are you ready?"
+            };
+
+            for (String message : messages) {
+                System.out.println(message);
+                try {
+                    Thread.sleep(1000); // delay for 1000 milliseconds (1 second)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
+
+
+
 
         System.out.println("----------------------------------------------------------------------------------------");
         System.out.println("Whats your name?"); // asking name
