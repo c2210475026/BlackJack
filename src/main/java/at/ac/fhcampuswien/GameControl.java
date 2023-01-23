@@ -169,6 +169,7 @@ public class GameControl {
         System.out.println("Your current Dealer is " + dealer.getName() + ".");
     }
 
+    // checkt ob der Input eine Nummer ist die >0 und < max Integer ist
     private boolean isGoodNumber(String input){
         if(input==null || input.equals("")){
             System.out.println("There is no input. Please type something.");
@@ -191,6 +192,8 @@ public class GameControl {
         }
     }
 
+    //checkt ob die Bet eine korrekte Eingabe bekommen hat, ist korrekt wenn es eine goodNumber ist
+    // und die Bet > Balance ist
     private boolean isBetValid(int balance, String betInput){
         if (isGoodNumber(betInput)){
             if (Integer.parseInt(betInput)>balance){

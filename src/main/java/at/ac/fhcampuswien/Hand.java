@@ -60,7 +60,7 @@ public class Hand {
     public void aceLogic() {
         //reset the value of all aces to 11
         for (Card card : inHand) {
-            if (card.getName() == "Ace") {
+            if (card.getName() == "A") {
                 card.setValue(11);
             }
         }
@@ -68,7 +68,7 @@ public class Hand {
         //iterate inHand and change the value of any ace so the handValue is not over 21
         int handValue = sumOfCards();
         for (Card card : inHand) {
-            if (card.getName() == "Ace" && handValue > 21) {
+            if (card.getName() == "A" && handValue > 21) {
                 card.setValue(1);
                 handValue = sumOfCards();
             }
