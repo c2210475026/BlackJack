@@ -186,7 +186,7 @@ public class GameControl {
 
             }catch (NumberFormatException e){
                 System.out.println("Please put in a Number.");
-                System.out.println("It should be above 0 & below max Integer(2147483647).");
+                System.out.println("It should be below max Integer(2147483647).");
                 return false;
             }
         }
@@ -257,6 +257,7 @@ public class GameControl {
             }
             if (input.equals("y")) {
                 System.out.println("Game over!");
+                sc.close();
                 break;
             } else {
                 System.out.println("Game is gonna continue");
